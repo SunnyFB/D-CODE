@@ -3,7 +3,7 @@ public class Pet {
     private double hunger;
     private final int maxHunger, maxWeight, maxHappiness, maxEnergy, maxHealth;
 
-    public Pet(int hunger, int weight, int happiness, int energy, int health)
+    public Pet(double hunger, int weight, int happiness, int energy, int health)
     {
         this.hunger = hunger;
         this.weight = weight;
@@ -42,5 +42,30 @@ public class Pet {
 
         if (health > maxHealth)
             health = maxHealth;
+    }
+
+    public int getHealth()
+    {
+        return health;
+    }
+
+    public int getWeight()
+    {
+        return weight;
+    }
+
+    public int getHappiness()
+    {
+        return happiness;
+    }
+
+    public int getEnergy()
+    {
+        return energy;
+    }
+
+    public double getHunger()
+    {
+        return hunger;
     }
 }
