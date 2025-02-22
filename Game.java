@@ -4,12 +4,15 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.function.ToDoubleFunction;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class Game {
     JFrame frame;
@@ -29,6 +32,7 @@ public class Game {
         try {
             saveFile = new File(saveName);
 
+            // New Save File
             if (saveFile.createNewFile()) {
 
                 BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
@@ -45,6 +49,7 @@ public class Game {
 
                 System.out.println("New save file was created!");
 
+            // Loaded Save File
             } else {
                 
                 String[] vars = new String[5];
@@ -80,6 +85,32 @@ public class Game {
 
         JPanel panel = new JPanel();
 
+        JButton feed = new JButton("Feed");
+        JTextField hunger = new JTextField("Hunger: " + virtualPet.getHunger());
+        ActionListener a1 = new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                virtualPet.feed(false);
+                hunger.setText("Hunger: " + virtualPet.getHunger());
+
+            }
+        };
+        feed.addActionListener(a1);
+
+        JButton save = new JButton("Save");
+        ActionListener a2 = new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                save();
+            }
+        };
+        save.addActionListener(a2);
+
+        panel.add(feed);
+        panel.add(hunger);
+        panel.add(save);
+        frame.add(panel);
+
         frame.setVisible(true);
         save();
         // Game loop down here
@@ -96,6 +127,15 @@ public class Game {
             int health = virtualPet.getHealth();
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(saveFile));
+            /*
+             * Order in which data should be saved, 
+             * and used in pet constructor
+             * HUNGER
+             * WEIGHT
+             * HAPPINESS
+             * ENERGY
+             * HEALTH
+             */
             writer.write(Double.toString(hunger));
             writer.write("\n" + Integer.toString(weight));
             writer.write("\n" + Integer.toString(happiness));
