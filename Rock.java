@@ -6,7 +6,7 @@ public class Rock extends Pet
 
     public Rock(int happiness)
     {
-        super(100,100,happiness,100,100);
+        super(10,10,happiness,10,10);
     }
 
     public Rock()

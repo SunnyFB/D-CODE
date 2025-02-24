@@ -5,7 +5,7 @@ public class Dog extends Pet
      * Dogs need more attention, and its happiness will run out faster.
      */
     
-    private final int maxHappiness = 50;
+    private final int maxHappiness = 6;
 
     public Dog(double hunger,int weight, int happiness,int energy,int health)
     {

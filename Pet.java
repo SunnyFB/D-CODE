@@ -2,7 +2,7 @@ public class Pet
 {
     private int health, weight, happiness, energy;
     private double hunger;
-    private final int maxHealth = 100, minHunger = 0, maxHappiness = 100, maxWeight = 100, maxEnergy = 100;
+    private final int maxHealth = 10, minHunger = 0, maxHappiness = 10, maxWeight = 10, maxEnergy = 10;
 
     public Pet(double hunger,int weight, int happiness,int energy,int health)
     {
@@ -67,10 +67,10 @@ public class Pet
      */
     public void isHungry()
     {
-        if (hunger >= 75)
+        if (hunger >= 6)
         {
             hungry(true);
-        } else if (hunger >= 50)
+        } else if (hunger >= 4)
         {
             hungry(false);
         }
