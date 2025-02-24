@@ -28,21 +28,19 @@ public class Dog extends Pet
 
     public void walk()
     {
-
+        super.walk();
+        boundValues();
     }
 
     public void play()
     {
-
-    }
-
-    public void toDoctor()
-    {
-
+        super.play();
+        boundValues();
     }
 
     public void train()
     {
-
+        super.train();
+        boundValues();
     }
 }
