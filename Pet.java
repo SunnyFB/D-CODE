@@ -63,7 +63,7 @@ public class Pet
     }
 
     /**
-     * Checks if pet is Hungry. If it is it will call the hungry method
+     * Checks if pet is Hungry. If it is it will call the hungry method.
      */
     public void isHungry()
     {
@@ -122,7 +122,6 @@ public class Pet
             hunger--;
         }
         boundValues();
-        isHungry();
     }
 
     /**
@@ -161,6 +160,7 @@ public class Pet
         energy--;
         hunger++;
         boundValues();
+        isHungry();
     }
 
     /**

@@ -2,7 +2,7 @@ public class Dog extends Pet
 {
     /**
      * Dog is a subclass of Pet. 
-     * Dogs need more attention, and its happiness will run out faster.
+     * Dogs need more attention, and have a lower max happiness.
      */
     
     private final int maxHappiness = 6;
