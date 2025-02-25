@@ -90,17 +90,17 @@ public class Game {
     {
         try {
             double hunger = virtualPet.getHunger();
-            int weight = virtualPet.getWeight();
-            int happiness = virtualPet.getHappiness();
-            int energy = virtualPet.getEnergy();
-            int health = virtualPet.getHealth();
+            double weight = virtualPet.getWeight();
+            double happiness = virtualPet.getHappiness();
+            double energy = virtualPet.getEnergy();
+            double health = virtualPet.getHealth();
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(saveFile));
             writer.write(Double.toString(hunger));
-            writer.write("\n" + Integer.toString(weight));
-            writer.write("\n" + Integer.toString(happiness));
-            writer.write("\n" + Integer.toString(energy));
-            writer.write("\n" + Integer.toString(health));
+            writer.write("\n" + Double.toString(weight));
+            writer.write("\n" + Double.toString(happiness));
+            writer.write("\n" + Double.toString(energy));
+            writer.write("\n" + Double.toString(health));
             writer.flush();
             writer.close();
             System.out.println("File Successfully Saved!");
