@@ -13,6 +13,10 @@ public class Cat extends Pet{
         super();
     }
 
+    /**
+     * Cat's version of isHungry().
+     * Cats are concidered Hungry sooner than normal pets.
+     */
     public void isHungry()
     {
         if (super.getHunger() >= 5)
@@ -24,6 +28,10 @@ public class Cat extends Pet{
         }
     }
 
+    /**
+     * Cat's version of walk.
+     * Stats change the same, but calls the cat version of isHungry()
+     */
     public void walk()
     {
         super.setWeight(super.getWeight() - 1);
@@ -35,6 +43,10 @@ public class Cat extends Pet{
         isHungry();
     }
 
+    /**
+     * Cat's version of play.
+     * Stats change the same, but calls the cat version of isHungry()
+     */
     public void play()
     {
         super.setWeight(super.getWeight() - 2);
@@ -46,6 +58,10 @@ public class Cat extends Pet{
         isHungry();
     }
 
+    /***
+     * Cat's version of attending training.
+     * Stats change the same, but calls the cat version of isHungry.
+     */
     public void train()
     {
         super.setHappiness(super.getHappiness() + 1);
