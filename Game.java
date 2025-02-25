@@ -1,26 +1,20 @@
 
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Scanner;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
 public class Game {
     JFrame frame;
     File saveFile;
     Pet virtualPet;
-    Scanner scanner;
     private final String saveName = "petgamedata.txt";
 
+    private boolean feeding = false;
+    
     public Game()
     {
         // Default Window Nonsense
@@ -69,13 +63,6 @@ public class Game {
                         Integer.parseInt(vars[3]), 
                         Integer.parseInt(vars[4]));
 
-                System.out.println("Save file loaded!");
-                System.out.println(virtualPet.getHunger());
-                System.out.println(virtualPet.getWeight());
-                System.out.println(virtualPet.getHappiness());
-                System.out.println(virtualPet.getEnergy());
-                System.out.println(virtualPet.getHealth());
-
                 reader.close();
             }
 
@@ -90,8 +77,7 @@ public class Game {
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
-                virtualPet.feed(false);
-                hunger.setText("Hunger: " + virtualPet.getHunger());
+                feeding = true;
 
             }
         };
@@ -113,8 +99,20 @@ public class Game {
 
         frame.setVisible(true);
         save();
+
+        runGameLoop();
         // Game loop down here
 
+    }
+
+    public void runGameLoop() {
+        Thread loop = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                gameLoop();
+            }
+        });
+        loop.start();
     }
 
     private void save()
@@ -143,11 +141,13 @@ public class Game {
             writer.write("\n" + Integer.toString(health));
             writer.flush();
             writer.close();
-            System.out.println("File Successfully Saved!");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
+    private void gameLoop() {
+        
+    }
     
 }
