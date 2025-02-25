@@ -1,10 +1,9 @@
 public class Pet
 {
-    private int health, weight, happiness, energy;
-    private double hunger;
-    private final int maxHealth = 10, minHunger = 0, maxHappiness = 10, maxWeight = 10, maxEnergy = 10;
+    private double health, weight, happiness, energy,hunger;
+    private final double maxHealth = 10.0, minHunger = 0, maxHappiness = 10.0, maxWeight = 10.0, maxEnergy = 10.0;
 
-    public Pet(double hunger,int weight, int happiness,int energy,int health)
+    public Pet(double hunger,double weight, double happiness,double energy,double health)
     {
        this.health = health;
        this.weight = weight;
@@ -166,14 +165,14 @@ public class Pet
     /**
      * returns health
      */
-    public int getHealth()
+    public double getHealth()
     {
         return health;
     }
     /**
      * sets health to a new value
      */
-    public void setHealth(int newHealth)
+    public void setHealth(double newHealth)
     {
         health = newHealth;
     }
@@ -181,14 +180,14 @@ public class Pet
     /**
      * gets weight
      */
-    public int getWeight()
+    public double getWeight()
     {
         return weight;
     }
     /**
      * sets weight to a new value
      */
-    public void setWeight(int newWeight)
+    public void setWeight(double newWeight)
     {
         weight = newWeight;
     }
@@ -196,14 +195,14 @@ public class Pet
     /**
      * returns happiness
      */
-    public int getHappiness()
+    public double getHappiness()
     {
         return happiness;
     }
     /**
      * sets happiness to a new value
      */
-    public void setHappiness(int newHappiness)
+    public void setHappiness(double newHappiness)
     {
         happiness = newHappiness;
     }
@@ -218,7 +217,7 @@ public class Pet
     /**
      * sets hunger to a new value
      */
-    public void setHunger(int newHunger)
+    public void setHunger(double newHunger)
     {
         hunger = newHunger;
     }
@@ -226,14 +225,14 @@ public class Pet
     /**
      * returns energy
      */
-    public int getEnergy()
+    public double getEnergy()
     {
         return energy;
     }
     /**
      * sets energy to a new value
      */
-    public void setEnergy(int newEnergy)
+    public void setEnergy(double newEnergy)
     {
         energy = newEnergy;
     }
