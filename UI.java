@@ -1,20 +1,18 @@
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
 
-public class UI{
+public class UI extends Main{
     JFrame frame;
-    public void openUI(double hunger){
+    public void openUI(double hungerValue){
         // Default Window Nonsense
-        frame = new JFrame("Game Title");
+        frame = new JFrame("Tamagotchi Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
         JPanel panel = new JPanel();
 
         JButton feed = new JButton("Feed");
-        //virtualPet.getHunger()
-        JTextField hungerField = new JTextField("Hunger: " + hunger);
+        JTextField hungerField = new JTextField("Hunger: " + hungerValue);
         hungerField.setEditable(false);
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae)
@@ -28,13 +26,13 @@ public class UI{
         ActionListener a2 = new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
-                save();
+                game.save();
             }
         };
         save.addActionListener(a2);
 
         panel.add(feed);
-        panel.add(hunger);
+        panel.add(hungerField);
         panel.add(save);
         frame.add(panel);
 

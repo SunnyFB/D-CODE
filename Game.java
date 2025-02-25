@@ -6,18 +6,17 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 
-public class Game {
+public class Game extends Main{
 
     File saveFile;
     Pet virtualPet;
     Scanner scanner;
-    UI ui;
+    UI ui = new UI();
 
     private final String saveName = "petgamedata.txt";
 
     public Game()
     {
-
         // Handle Save Data
         try {
             saveFile = new File(saveName);
@@ -66,6 +65,8 @@ public class Game {
                 System.out.println(virtualPet.getEnergy());
                 System.out.println(virtualPet.getHealth());
 
+                ui.openUI(virtualPet.getHunger());
+
                 reader.close();
             }
 
@@ -77,7 +78,7 @@ public class Game {
 
     }
 
-    private void save()
+    public void save()
     {
         try {
             double hunger = virtualPet.getHunger();
@@ -109,9 +110,7 @@ public class Game {
         }
     }
 
-    public void feed(){
-        
-    }
+    public void feed(){}
 
     
 }
