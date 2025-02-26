@@ -1,9 +1,8 @@
 public class Rock extends Pet
 {
     /**
-     * a subclass of Pet. The pet rock only has happiness.
+     * Rock is a subclass of Pet. The pet rock only has happiness.
      */
-
     public Rock(double happiness)
     {
         super(10,10,happiness,10,10);
