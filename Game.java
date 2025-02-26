@@ -53,10 +53,10 @@ public class Game extends Main{
                 }
 
                 virtualPet = new Pet(Double.parseDouble(vars[0]), 
-                        Integer.parseInt(vars[1]), 
-                        Integer.parseInt(vars[2]), 
-                        Integer.parseInt(vars[3]), 
-                        Integer.parseInt(vars[4]));
+                    Double.parseDouble(vars[1]), 
+                    Double.parseDouble(vars[2]), 
+                    Double.parseDouble(vars[3]), 
+                    Double.parseDouble(vars[4]));
 
                 System.out.println("Save file loaded!");
                 System.out.println(virtualPet.getHunger());
