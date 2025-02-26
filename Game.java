@@ -1,4 +1,5 @@
 
+import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -10,11 +11,12 @@ public class Game extends Main{
 
     File saveFile;
     Pet virtualPet;
-    Scanner scanner;
     UI ui = new UI();
 
     private final String saveName = "petgamedata.txt";
 
+    private boolean feeding = false;
+    
     public Game()
     {
         // Handle Save Data
@@ -58,15 +60,6 @@ public class Game extends Main{
                     Double.parseDouble(vars[3]), 
                     Double.parseDouble(vars[4]));
 
-                System.out.println("Save file loaded!");
-                System.out.println(virtualPet.getHunger());
-                System.out.println(virtualPet.getWeight());
-                System.out.println(virtualPet.getHappiness());
-                System.out.println(virtualPet.getEnergy());
-                System.out.println(virtualPet.getHealth());
-
-                ui.openUI(virtualPet.getHunger());
-
                 reader.close();
             }
 
@@ -74,11 +67,23 @@ public class Game extends Main{
             e.printStackTrace();
         }
         save();
+
+        runGameLoop();
         // Game loop down here
 
     }
 
-    public void save()
+    public void runGameLoop() {
+        Thread loop = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                gameLoop();
+            }
+        });
+        loop.start();
+    }
+
+    private void save()
     {
         try {
             double hunger = virtualPet.getHunger();
@@ -104,13 +109,35 @@ public class Game extends Main{
             writer.write("\n" + Double.toString(health));
             writer.flush();
             writer.close();
-            System.out.println("File Successfully Saved!");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void feed(){}
+    private void gameLoop() {
+        final double gameHertz = 2.0;
+        final double timeBetweenUpdates = 1000000000 / gameHertz;
+        double lastUpdate = System.nanoTime();
 
+        while (true) { 
+            double now = System.nanoTime();
+            if(now - lastUpdate > timeBetweenUpdates)
+            {
+                lastUpdate = now;
+                updateGame();
+            }
+        }
+    }
+
+    private void updateGame()
+    {
+        if (feeding)
+        {
+            virtualPet.feed(false);
+        }
+        virtualPet.setHunger(virtualPet.getHunger() + .1);
+        feeding = false;
+        hunger.setText("Hunger: " + virtualPet.getHunger());
+    }
     
 }
