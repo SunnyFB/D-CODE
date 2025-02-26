@@ -15,7 +15,7 @@ public class Alien extends Pet{
     }
 
     /**
-     * Take Alien for a walk.
+     * Take alien for a walk.
      */
     public void walk()
     {
