@@ -11,6 +11,8 @@ public class Game {
     JFrame frame;
     File saveFile;
     Pet virtualPet;
+    JPanel gamePanel;
+    JTextField hunger;
     private final String saveName = "petgamedata.txt";
 
     private boolean feeding = false;
@@ -70,10 +72,10 @@ public class Game {
             e.printStackTrace();
         }
 
-        JPanel panel = new JPanel();
+        gamePanel = new JPanel();
 
         JButton feed = new JButton("Feed");
-        JTextField hunger = new JTextField("Hunger: " + virtualPet.getHunger());
+        hunger = new JTextField("Hunger: " + virtualPet.getHunger());
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
@@ -92,10 +94,10 @@ public class Game {
         };
         save.addActionListener(a2);
 
-        panel.add(feed);
-        panel.add(hunger);
-        panel.add(save);
-        frame.add(panel);
+        gamePanel.add(feed);
+        gamePanel.add(hunger);
+        gamePanel.add(save);
+        frame.add(gamePanel);
 
         frame.setVisible(true);
         save();
@@ -147,7 +149,29 @@ public class Game {
     }
 
     private void gameLoop() {
-        
+        final double gameHertz = 2.0;
+        final double timeBetweenUpdates = 1000000000 / gameHertz;
+        double lastUpdate = System.nanoTime();
+
+        while (true) { 
+            double now = System.nanoTime();
+            if(now - lastUpdate > timeBetweenUpdates)
+            {
+                lastUpdate = now;
+                updateGame();
+            }
+        }
+    }
+
+    private void updateGame()
+    {
+        if (feeding)
+        {
+            virtualPet.feed(false);
+        }
+        virtualPet.setHunger(virtualPet.getHunger() + .1);
+        feeding = false;
+        hunger.setText("Hunger: " + virtualPet.getHunger());
     }
     
 }

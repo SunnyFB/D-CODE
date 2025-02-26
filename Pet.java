@@ -218,7 +218,7 @@ public class Pet
     /**
      * sets hunger to a new value
      */
-    public void setHunger(int newHunger)
+    public void setHunger(double newHunger)
     {
         hunger = newHunger;
     }
