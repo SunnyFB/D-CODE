@@ -2,6 +2,8 @@
 
 public class Main
 {
+    static Game game;
+    static UI ui;
     public static void main(String[] args) {
         // JFrame frame = new JFrame("Game");
         // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,6 +37,7 @@ public class Main
         // frame.add(textPanel, BorderLayout.SOUTH);
 
         // frame.setVisible(true);
-        Game game = new Game();
+        game = new Game();
+        ui = new UI();
     }
 }
