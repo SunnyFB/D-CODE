@@ -86,7 +86,7 @@ public class Game extends Main{
     private void save()
     {
         try {
-            double hunger = virtualPet.getHunger();
+            double hunger = virtualPet.getFullness();
             double weight = virtualPet.getWeight();
             double happiness = virtualPet.getHappiness();
             double energy = virtualPet.getEnergy();
@@ -135,9 +135,9 @@ public class Game extends Main{
         {
             virtualPet.feed(false);
         }
-        virtualPet.setHunger(virtualPet.getHunger() + .1);
+        virtualPet.setFullness(virtualPet.getFullness() + .1);
         feeding = false;
-        hunger.setText("Hunger: " + virtualPet.getHunger());
+        hunger.setText("Hunger: " + virtualPet.getFullness());
     }
     
 }
