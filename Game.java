@@ -43,8 +43,6 @@ public class Game {
                 writer.flush();
                 writer.close();
 
-                System.out.println("New save file was created!");
-
             // Loaded Save File
             } else {
                 
@@ -55,7 +53,6 @@ public class Game {
                 while ((line = reader.readLine()) != null)
                 {
                     vars[i] = line;
-                    System.out.println(vars[i]);
                     i++;
                 }
 
@@ -76,6 +73,7 @@ public class Game {
 
         JButton feed = new JButton("Feed");
         hunger = new JTextField("Hunger: " + virtualPet.getHunger(), 15);
+        hunger.setEditable(false);
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
@@ -163,11 +161,12 @@ public class Game {
             {
                 lastUpdate = now;
                 updateGame();
-            }
+                
             if(now - lastDrain > timeBetweenDrain)
             {
                 lastDrain = now;
                 virtualPet.setHunger(virtualPet.getHunger() + .1);
+            }
             }
         }
     }
