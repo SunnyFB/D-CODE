@@ -3,9 +3,9 @@ public class Cat extends Pet{
      * Cat is a subclass of Pet.
      * Cats get hungry more often.
      */
-    public Cat(double hunger,double weight, double happiness,double energy,double health)
+    public Cat(double fullness,double weight, double happiness,double energy,double health)
     {
-        super(hunger,weight,happiness,energy,health);
+        super(fullness,weight,happiness,energy,health);
     }
 
     public Cat()
@@ -19,10 +19,10 @@ public class Cat extends Pet{
      */
     public void isHungry()
     {
-        if (super.getHunger() >= 5)
+        if (super.getFullness() <= 5)
         {
             super.hungry(true);
-        } else if (super.getHunger() >= 3)
+        } else if (super.getFullness() <= 7)
         {
             super.hungry(false);
         }
@@ -38,7 +38,7 @@ public class Cat extends Pet{
         super.setEnergy(super.getEnergy() - 1);
         super.setHappiness(super.getHappiness() + 1);
         super.setHealth(super.getHealth() + 1);
-        super.setHunger(super.getHunger() + 1);
+        super.setFullness(super.getFullness() - 1);
         super.boundValues();
         isHungry();
     }
@@ -53,7 +53,7 @@ public class Cat extends Pet{
         super.setEnergy(super.getEnergy() - 2);
         super.setHappiness(super.getHappiness() + 2);
         super.setHealth(super.getHealth() + 2);
-        super.setHunger(super.getHunger() + 2);
+        super.setFullness(super.getFullness() - 2);
         super.boundValues();
         isHungry();
     }
@@ -66,7 +66,7 @@ public class Cat extends Pet{
     {
         super.setHappiness(super.getHappiness() + 1);
         super.setEnergy(super.getEnergy() + 1);
-        super.setHunger(super.getHunger() + 1);
+        super.setFullness(super.getFullness() - 1);
         super.boundValues();
         isHungry();
     }

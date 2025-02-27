@@ -4,9 +4,9 @@ public class Dog extends Pet
      * Dog is a subclass of Pet. 
      * Dogs need more attention, and get less happiness from certain things.
      */
-    public Dog(double hunger,double weight, double happiness,double energy,double health)
+    public Dog(double fullness,double weight, double happiness,double energy,double health)
     {
-        super(hunger,weight,happiness,energy,health);
+        super(fullness,weight,happiness,energy,health);
     }
 
     public Dog()
