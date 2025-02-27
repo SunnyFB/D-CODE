@@ -65,7 +65,7 @@ public class Game {
                         Integer.parseInt(vars[4]));
 
                 System.out.println("Save file loaded!");
-                System.out.println(virtualPet.getHunger());
+                System.out.println(virtualPet.getFullness());
                 System.out.println(virtualPet.getWeight());
                 System.out.println(virtualPet.getHappiness());
                 System.out.println(virtualPet.getEnergy());
@@ -89,7 +89,7 @@ public class Game {
     private void save()
     {
         try {
-            double hunger = virtualPet.getHunger();
+            double hunger = virtualPet.getFullness();
             double weight = virtualPet.getWeight();
             double happiness = virtualPet.getHappiness();
             double energy = virtualPet.getEnergy();
