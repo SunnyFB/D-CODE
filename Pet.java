@@ -1,14 +1,14 @@
 public class Pet
 {
-    private double health, weight, happiness, energy,hunger;
-    private final double maxHealth = 10.0, minHunger = 0, maxHappiness = 10.0, maxWeight = 10.0, maxEnergy = 10.0;
+    private double health, weight, happiness, energy,fullness;
+    private final double maxHealth = 10.0, maxFullness = 10.0, maxHappiness = 10.0, maxWeight = 10.0, maxEnergy = 10.0;
 
-    public Pet(double hunger,double weight, double happiness,double energy,double health)
+    public Pet(double fullness,double weight, double happiness,double energy,double health)
     {
        this.health = health;
        this.weight = weight;
        this.happiness = happiness;
-       this.hunger = hunger;
+       this.fullness = fullness;
        this.energy = energy;
     }
 
@@ -17,7 +17,7 @@ public class Pet
         health = maxHealth;
         weight = maxWeight;
         happiness = maxHappiness;
-        hunger = 0;
+        fullness = maxFullness;
         energy = maxEnergy;
     }
     
@@ -55,9 +55,10 @@ public class Pet
         {
             energy = maxEnergy;
         }
-        if (hunger < minHunger)
+        if (fullness > maxFullness)
         {
-            hunger = minHunger;
+            fullness = maxFullness;
+            weight++;
         }
     }
 
@@ -66,10 +67,10 @@ public class Pet
      */
     public void isHungry()
     {
-        if (hunger >= 6)
+        if (fullness <= 3)
         {
             hungry(true);
-        } else if (hunger >= 4)
+        } else if (fullness <= 5)
         {
             hungry(false);
         }
@@ -84,7 +85,7 @@ public class Pet
         happiness++;
         health++;
         energy--;
-        hunger++;
+        fullness--;
         boundValues();
         isHungry();
     }
@@ -98,7 +99,7 @@ public class Pet
         happiness += 2;
         health += 2;
         energy -= 2;
-        hunger += 2;
+        fullness -= 2;
         boundValues();
         isHungry();
     }
@@ -111,14 +112,14 @@ public class Pet
         if (isTreat)
         {
             weight += 2;
-            hunger -= 0.5;
+            fullness += 0.5;
 
         } else
         {
             weight++;
             health++;
             energy++;
-            hunger--;
+            fullness++;
         }
         boundValues();
     }
@@ -157,7 +158,7 @@ public class Pet
     {
         happiness++;
         energy--;
-        hunger++;
+        fullness--;
         boundValues();
         isHungry();
     }
@@ -210,16 +211,16 @@ public class Pet
     /**
      * returns hunger
      */
-    public double getHunger()
+    public double getFullness()
     {
-        return hunger;
+        return fullness;
     }
     /**
      * sets hunger to a new value
      */
-    public void setHunger(double newHunger)
+    public void setFullness(double newFullness)
     {
-        hunger = newHunger;
+        fullness = newFullness;
     }
     
     /**
