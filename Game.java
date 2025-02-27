@@ -75,7 +75,7 @@ public class Game {
         gamePanel = new JPanel();
 
         JButton feed = new JButton("Feed");
-        hunger = new JTextField("Hunger: " + virtualPet.getHunger());
+        hunger = new JTextField("Hunger: " + virtualPet.getHunger(), 15);
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae)
             {
@@ -149,9 +149,13 @@ public class Game {
     }
 
     private void gameLoop() {
-        final double gameHertz = 2.0;
-        final double timeBetweenUpdates = 1000000000 / gameHertz;
+        final double updateHertz = 60.0;
+        final double timeBetweenUpdates = 1000000000 / updateHertz;
         double lastUpdate = System.nanoTime();
+
+        final double drainHertz = .5;
+        final double timeBetweenDrain = 1000000000 / drainHertz;
+        double lastDrain = System.nanoTime();
 
         while (true) { 
             double now = System.nanoTime();
@@ -159,6 +163,11 @@ public class Game {
             {
                 lastUpdate = now;
                 updateGame();
+            }
+            if(now - lastDrain > timeBetweenDrain)
+            {
+                lastDrain = now;
+                virtualPet.setHunger(virtualPet.getHunger() + .1);
             }
         }
     }
@@ -169,7 +178,6 @@ public class Game {
         {
             virtualPet.feed(false);
         }
-        virtualPet.setHunger(virtualPet.getHunger() + .1);
         feeding = false;
         hunger.setText("Hunger: " + virtualPet.getHunger());
     }

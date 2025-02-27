@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Pet
 {
     private int health, weight, happiness, energy;
@@ -213,7 +215,8 @@ public class Pet
      */
     public double getHunger()
     {
-        return hunger;
+        DecimalFormat df = new DecimalFormat("#.#");
+        return Double.parseDouble(df.format(hunger));
     }
     /**
      * sets hunger to a new value
