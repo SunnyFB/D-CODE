@@ -20,6 +20,30 @@ public class Pet
         fullness = maxFullness;
         energy = maxEnergy;
     }
+
+    /**
+     * returns the drain rate for fullness
+     */
+    public double fullnessDrain()
+    {
+        return 0.1;
+    }
+
+    /**
+     * returns the drain rate for happiness
+     */
+    public double happinessDrain()
+    {
+        return 0.05;
+    }
+
+    /**
+     * returns the drain rate for energy
+     */
+    public double energyDrain()
+    {
+        return 0.01;
+    }
     
     /**
      * checks if pet is dead
