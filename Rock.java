@@ -14,6 +14,30 @@ public class Rock extends Pet
     }
 
     /**
+     * Rock's happiness drain rate
+     */
+    public double happinessDrain()
+    {
+        return 0.05;
+    }
+
+    /**
+     * Rock's fullness drain rate
+     */
+    public double fullnessDrain()
+    {
+        return 0;
+    }
+
+    /**
+     * Rock's energy drain rate
+     */
+    public double energyDrain()
+    {
+        return 0;
+    }
+
+    /**
      * Rock's version of walk
      */
     public void walk()
