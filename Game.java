@@ -134,6 +134,8 @@ public class Game extends Main{
         ui.update(virtualPet);
     }
 
+    //UI functions for now no changy pls
+    //No change it worky >:(
     public void feed(){
         virtualPet.feed(false);
     }
