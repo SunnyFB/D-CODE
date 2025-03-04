@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Pet
 {
     private double health, weight, happiness, energy,fullness;
@@ -192,7 +194,7 @@ public class Pet
      */
     public double getHealth()
     {
-        return health;
+        return decimalRound(health);
     }
     /**
      * sets health to a new value
@@ -207,7 +209,7 @@ public class Pet
      */
     public double getWeight()
     {
-        return weight;
+        return decimalRound(weight);
     }
     /**
      * sets weight to a new value
@@ -222,7 +224,7 @@ public class Pet
      */
     public double getHappiness()
     {
-        return happiness;
+        return decimalRound(happiness);
     }
     /**
      * sets happiness to a new value
@@ -237,7 +239,7 @@ public class Pet
      */
     public double getFullness()
     {
-        return fullness;
+        return decimalRound(fullness);
     }
     /**
      * sets hunger to a new value
@@ -252,7 +254,7 @@ public class Pet
      */
     public double getEnergy()
     {
-        return energy;
+        return decimalRound(energy);
     }
     /**
      * sets energy to a new value
@@ -260,5 +262,11 @@ public class Pet
     public void setEnergy(double newEnergy)
     {
         energy = newEnergy;
+    }
+
+    private double decimalRound(double num)
+    {
+        DecimalFormat df = new DecimalFormat("#.#");
+        return Double.parseDouble(df.format(num));
     }
 }
