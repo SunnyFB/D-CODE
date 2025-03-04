@@ -1,7 +1,7 @@
 public class Cat extends Pet{
     /**
      * Cat is a subclass of Pet.
-     * Cats get hungry more often.
+     * Cats get hungry faster, tired faster, but don't get unhappy as fast
      */
     public Cat(double fullness,double weight, double happiness,double energy,double health)
     {
@@ -13,64 +13,19 @@ public class Cat extends Pet{
         super();
     }
 
-    /**
-     * Cat's version of isHungry().
-     * Cats are concidered Hungry sooner than normal pets.
-     */
-    public void isHungry()
+    public double fullnessDrain()
     {
-        if (super.getFullness() <= 5)
-        {
-            super.hungry(true);
-        } else if (super.getFullness() <= 7)
-        {
-            super.hungry(false);
-        }
+        return 0.2;
     }
 
-    /**
-     * Cat's version of walk.
-     * Stats change the same, but calls the cat version of isHungry()
-     */
-    public void walk()
+    public double happinessDrain()
     {
-        super.setWeight(super.getWeight() - 1);
-        super.setEnergy(super.getEnergy() - 1);
-        super.setHappiness(super.getHappiness() + 1);
-        super.setHealth(super.getHealth() + 1);
-        super.setFullness(super.getFullness() - 1);
-        super.boundValues();
-        isHungry();
+        return 0.035;
     }
 
-    /**
-     * Cat's version of play.
-     * Stats change the same, but calls the cat version of isHungry()
-     */
-    public void play()
+    public double energyDrain()
     {
-        super.setWeight(super.getWeight() - 2);
-        super.setEnergy(super.getEnergy() - 2);
-        super.setHappiness(super.getHappiness() + 2);
-        super.setHealth(super.getHealth() + 2);
-        super.setFullness(super.getFullness() - 2);
-        super.boundValues();
-        isHungry();
+        return 0.02;
     }
-
-    /***
-     * Cat's version of attending training.
-     * Stats change the same, but calls the cat version of isHungry.
-     */
-    public void train()
-    {
-        super.setHappiness(super.getHappiness() + 1);
-        super.setEnergy(super.getEnergy() + 1);
-        super.setFullness(super.getFullness() - 1);
-        super.boundValues();
-        isHungry();
-    }
-
-
-
+    
 }
