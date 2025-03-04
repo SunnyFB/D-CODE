@@ -15,6 +15,30 @@ public class Alien extends Pet{
     }
 
     /**
+     * Alien's fullness drain rate
+     */
+    public double fullnessDrain()
+    {
+        return 0.2;
+    }
+
+    /**
+     * Alien's happiness drain rate
+     */
+    public double happinessDrain()
+    {
+        return 0.1;
+    }
+
+    /**
+     * Alien's energy drain rate
+     */
+    public double energyDrain()
+    {
+        return 0.03;
+    }
+
+    /**
      * Take alien for a walk.
      */
     public void walk()
