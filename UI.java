@@ -13,7 +13,7 @@ public class UI extends Game{
         JPanel panel = new JPanel();
 
         JButton feedButton = new JButton("Feed");
-        hungerField = new JTextField("Hunger: " + vPet.getHunger());
+        hungerField = new JTextField("Hunger: " + vPet.getFullness());
         hungerField.setEditable(false);
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
@@ -39,7 +39,7 @@ public class UI extends Game{
     }
     public void update(Pet vPet){
         //Update the UI
-        hungerField.setText("Hunger: " + vPet.getHunger());
-        System.out.println("Hungerless"+vPet.getHunger());
+        hungerField.setText("Hunger: " + vPet.getFullness());
+        System.out.println("Hungerless"+vPet.getFullness());
     }
 }
