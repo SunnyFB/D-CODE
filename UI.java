@@ -1,9 +1,10 @@
 import javax.swing.*;
 import java.awt.event.*;
 
-public class UI extends Main{
+public class UI extends Game{
     JFrame frame;
-    public void openUI(double hungerValue){
+    JTextField hungerField;
+    public void openUI(Pet vPet){
         // Default Window Nonsense
         frame = new JFrame("Tamagotchi Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -11,31 +12,34 @@ public class UI extends Main{
 
         JPanel panel = new JPanel();
 
-        JButton feed = new JButton("Feed");
-        JTextField hungerField = new JTextField("Hunger: " + hungerValue);
+        JButton feedButton = new JButton("Feed");
+        hungerField = new JTextField("Hunger: " + vPet.getHunger());
         hungerField.setEditable(false);
         ActionListener a1 = new ActionListener() {
-            public void actionPerformed(ActionEvent ae)
-            {
-                //feed
+            public void actionPerformed(ActionEvent ae){
+                feed();
             }
         };
-        feed.addActionListener(a1);
+        feedButton.addActionListener(a1);
 
         JButton save = new JButton("Save");
         ActionListener a2 = new ActionListener() {
-            public void actionPerformed(ActionEvent ae)
-            {
-                game.save();
+            public void actionPerformed(ActionEvent ae){
+                save();
             }
         };
         save.addActionListener(a2);
 
-        panel.add(feed);
+        panel.add(feedButton);
         panel.add(hungerField);
         panel.add(save);
         frame.add(panel);
 
         frame.setVisible(true);
+    }
+    public void update(Pet vPet){
+        //Update the UI
+        hungerField.setText("Hunger: " + vPet.getHunger());
+        System.out.println("Hungerless"+vPet.getHunger());
     }
 }

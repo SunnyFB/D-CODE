@@ -1,89 +1,90 @@
 
-import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Game extends Main{
 
     File saveFile;
     Pet virtualPet;
-    UI ui = new UI();
+    Scanner scanner;
+    UI ui;
+    Scanner scanner;
+    UI ui;
 
     private final String saveName = "petgamedata.txt";
 
-    private boolean feeding = false;
-    
     public Game()
     {
-        // Handle Save Data
-        try {
-            saveFile = new File(saveName);
+    }
 
-            // New Save File
-            if (saveFile.createNewFile()) {
-
-                BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
-                writer.write("0");
-                writer.write("\n100");
-                writer.write("\n100");
-                writer.write("\n100");
-                writer.write("\n100");
-
-                virtualPet = new Pet();
-
-                writer.flush();
-                writer.close();
-
-                System.out.println("New save file was created!");
-
-            // Loaded Save File
-            } else {
-                
-                String[] vars = new String[5];
-                BufferedReader reader = new BufferedReader(new FileReader(saveFile));
-                String line;
-                int i = 0;
-                while ((line = reader.readLine()) != null)
-                {
-                    vars[i] = line;
-                    System.out.println(vars[i]);
-                    i++;
+    public void start(){
+        ui = new UI();
+                // Handle Save Data
+                try {
+                    saveFile = new File(saveName);
+        
+                    // New Save File
+                    if (saveFile.createNewFile()) {
+        
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
+                        writer.write("0");
+                        writer.write("\n100");
+                        writer.write("\n100");
+                        writer.write("\n100");
+                        writer.write("\n100");
+        
+                        virtualPet = new Pet();
+        
+                        writer.flush();
+                        writer.close();
+        
+                        System.out.println("New save file was created!");
+        
+                    // Loaded Save File
+                    } else {
+                        
+                        String[] vars = new String[5];
+                        BufferedReader reader = new BufferedReader(new FileReader(saveFile));
+                        String line;
+                        int i = 0;
+                        while ((line = reader.readLine()) != null)
+                        {
+                            vars[i] = line;
+                            System.out.println(vars[i]);
+                            i++;
+                        }
+        
+                        virtualPet = new Pet(Double.parseDouble(vars[0]), 
+                            Double.parseDouble(vars[1]), 
+                            Double.parseDouble(vars[2]), 
+                            Double.parseDouble(vars[3]), 
+                            Double.parseDouble(vars[4]));
+        
+                        System.out.println("Save file loaded!");
+                        System.out.println(virtualPet.getHunger());
+                        System.out.println(virtualPet.getWeight());
+                        System.out.println(virtualPet.getHappiness());
+                        System.out.println(virtualPet.getEnergy());
+                        System.out.println(virtualPet.getHealth());
+        
+                        ui.openUI(virtualPet);
+                        gameLoop();
+        
+                        reader.close();
+                    }
+        
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
-
-                virtualPet = new Pet(Double.parseDouble(vars[0]), 
-                    Double.parseDouble(vars[1]), 
-                    Double.parseDouble(vars[2]), 
-                    Double.parseDouble(vars[3]), 
-                    Double.parseDouble(vars[4]));
-
-                reader.close();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        save();
-
-        runGameLoop();
-        // Game loop down here
-
     }
 
-    public void runGameLoop() {
-        Thread loop = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                gameLoop();
-            }
-        });
-        loop.start();
-    }
-
-    private void save()
+    public void save()
     {
         try {
             double hunger = virtualPet.getFullness();
@@ -114,8 +115,22 @@ public class Game extends Main{
         }
     }
 
+
+    Timer timer = new Timer();
+    int begin = 0;
+    int timeInterval = 1000;
+
+    timer.scheduleAtFixedRate(new TimerTask() {
+        @Override
+        public void run() {
+            updateGame();
+        }
+    }, begin, timeInterval);
+
+
+
     private void gameLoop() {
-        final double gameHertz = 2.0;
+        final double gameHertz = 0.5;
         final double timeBetweenUpdates = 1000000000 / gameHertz;
         double lastUpdate = System.nanoTime();
 
@@ -131,13 +146,15 @@ public class Game extends Main{
 
     private void updateGame()
     {
-        if (feeding)
-        {
-            virtualPet.feed(false);
-        }
-        virtualPet.setFullness(virtualPet.getFullness() + .1);
-        feeding = false;
-        hunger.setText("Hunger: " + virtualPet.getFullness());
+        virtualPet.setHunger(virtualPet.getHunger() + .1);
+        ui.update(virtualPet);
     }
-    
+
+    public void feed(){
+        virtualPet.feed(false);
+    }
+
+    public void feed(){
+        virtualPet.feed(false);
+    }
 }

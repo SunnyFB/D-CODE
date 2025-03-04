@@ -1,7 +1,4 @@
-
 import javax.swing.SwingUtilities;
-
-
 
 public class Main
 {
@@ -9,8 +6,7 @@ public class Main
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Game game = new Game();
-                UI ui = new UI();
+                new Game().start();
             }
         });
     }
