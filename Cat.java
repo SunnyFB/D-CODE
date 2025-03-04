@@ -13,16 +13,25 @@ public class Cat extends Pet{
         super();
     }
 
+    /**
+     * Cat's fullness drain rate
+     */
     public double fullnessDrain()
     {
         return 0.2;
     }
 
+    /**
+     * Cat's happiness drain rate
+     */
     public double happinessDrain()
     {
         return 0.035;
     }
 
+    /**
+     * Cat's energy drain rate
+     */
     public double energyDrain()
     {
         return 0.02;
