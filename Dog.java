@@ -14,6 +14,10 @@ public class Dog extends Pet
         super();
     }
 
+    /**
+     * @return Dog's happiness drain rate
+     * @override
+     */
     public double HappinessDrain()
     {
         return 0.1;
