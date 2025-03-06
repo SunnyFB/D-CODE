@@ -38,7 +38,7 @@ public class Pet
     }
 
     /**
-     * returns the drain rate for fullness
+     * @return the drain rate for fullness
      */
     public double fullnessDrain()
     {
@@ -46,7 +46,7 @@ public class Pet
     }
 
     /**
-     * returns the drain rate for happiness
+     * @return the drain rate for happiness
      */
     public double happinessDrain()
     {
@@ -54,7 +54,7 @@ public class Pet
     }
 
     /**
-     * returns the drain rate for energy
+     * @return the drain rate for energy
      */
     public double energyDrain()
     {
@@ -62,7 +62,7 @@ public class Pet
     }
     
     /**
-     * returns the drain rate for hygiene
+     * @return the drain rate for hygiene
      */
     public double hygieneDrain()
     {
