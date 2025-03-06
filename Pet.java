@@ -5,6 +5,15 @@ public class Pet
     private double health, weight, happiness, energy,fullness, hygiene;
     private final double maxHealth = 10.0, maxFullness = 10.0, maxHappiness = 10.0, maxWeight = 10.0, maxEnergy = 10.0, maxHygiene = 10.0;
 
+    /**
+     * Constructor for Pet
+     * @param fullness measures hunger of the pet
+     * @param weight measures weight of the pet
+     * @param happiness measures happiness of the pet
+     * @param energy measures energy of the pet
+     * @param health measures health of the pet
+     * @param hygiene measures hygiene of the pet
+     */
     public Pet(double fullness,double weight, double happiness,double energy,double health, double hygiene)
     {
        this.health = health;
@@ -15,6 +24,9 @@ public class Pet
        this.hygiene = hygiene;
     }
 
+    /**
+     * No parameter constructor for Pet
+     */
     public Pet()
     {
         health = maxHealth;
