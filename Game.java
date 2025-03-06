@@ -85,7 +85,7 @@ public class Game extends Main{
     public void save()
     {
         try {
-            double hunger = virtualPet.getFullness();
+            double fullness = virtualPet.getFullness();
             double weight = virtualPet.getWeight();
             double happiness = virtualPet.getHappiness();
             double energy = virtualPet.getEnergy();
@@ -95,13 +95,13 @@ public class Game extends Main{
             /*
              * Order in which data should be saved, 
              * and used in pet constructor
-             * HUNGER
+             * fullness
              * WEIGHT
              * HAPPINESS
              * ENERGY
              * HEALTH
              */
-            writer.write(Double.toString(hunger));
+            writer.write(Double.toString(fullness));
             writer.write("\n" + Double.toString(weight));
             writer.write("\n" + Double.toString(happiness));
             writer.write("\n" + Double.toString(energy));
@@ -116,27 +116,47 @@ public class Game extends Main{
 
 
     private void gameLoop() {
-        Timer timer = new Timer();
-        int begin = 0;
-        int timeInterval = 1000;
-    
-        timer.scheduleAtFixedRate(new TimerTask() {
+        //Game timer
+        Timer gameTimer = new Timer();
+        int gameBegin = 0;
+        int gameTimeInterval = 1000;
+        
+        gameTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 updateGame();
             }
-        }, begin, timeInterval);
+        }, gameBegin, gameTimeInterval);
+        
+        //UI timer
+        Timer uiTimer = new Timer();
+        int uiBegin = 0;
+        int uiTimeInterval = 10;
+        
+        uiTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                updateFromUi();
+            }
+        }, uiBegin, uiTimeInterval);
     }
 
-    private void updateGame()
+    private void updateFromUi()
     {
-        virtualPet.setFullness(virtualPet.getFullness() + .1);
+        //Updating from what UI
+        //Runs once every 10 ms
+        if (ui.save) save();
+        ui.save = false;
+        if (ui.feedFood) virtualPet.feed(false);
+        ui.feedFood = false;
+        if (ui.feedTreat) virtualPet.feed(false);
+        ui.feedTreat = false;
+
         ui.update(virtualPet);
     }
 
-    //UI functions for now no changy pls
-    //No change it worky >:(
-    public void feed(){
-        virtualPet.feed(false);
+    public void updateGame(){
+        //Runs once a second
+        virtualPet.setFullness(virtualPet.getFullness() + .1);
     }
 }
