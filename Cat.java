@@ -14,7 +14,8 @@ public class Cat extends Pet{
     }
 
     /**
-     * Cat's fullness drain rate
+     * @return Cat's fullness drain rate
+     * @override
      */
     public double fullnessDrain()
     {
@@ -22,7 +23,8 @@ public class Cat extends Pet{
     }
 
     /**
-     * Cat's happiness drain rate
+     * @return Cat's happiness drain rate
+     * @override
      */
     public double happinessDrain()
     {
@@ -30,11 +32,21 @@ public class Cat extends Pet{
     }
 
     /**
-     * Cat's energy drain rate
+     * @return Cat's energy drain rate
+     * @override
      */
     public double energyDrain()
     {
         return 0.02;
+    }
+
+    /**
+     * @return returns the drain rate for hygiene
+     * @override
+     */
+    public double hygieneDrain()
+    {
+        return 0.0001;
     }
     
 }

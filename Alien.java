@@ -15,7 +15,8 @@ public class Alien extends Pet{
     }
 
     /**
-     * Alien's fullness drain rate
+     * @return Alien's fullness drain rate
+     * @override
      */
     public double fullnessDrain()
     {
@@ -23,7 +24,8 @@ public class Alien extends Pet{
     }
 
     /**
-     * Alien's happiness drain rate
+     * @return Alien's happiness drain rate
+     * @override
      */
     public double happinessDrain()
     {
@@ -31,7 +33,8 @@ public class Alien extends Pet{
     }
 
     /**
-     * Alien's energy drain rate
+     * @return Alien's energy drain rate
+     * @override
      */
     public double energyDrain()
     {
@@ -39,7 +42,18 @@ public class Alien extends Pet{
     }
 
     /**
+     * @return Alien's hygiene drain rate
+     * @override
+     */
+    public double hygieneDrain()
+    {
+        return 0.04;
+    }
+
+
+    /**
      * Take alien for a walk.
+     * @override
      */
     public void walk()
     {
@@ -49,6 +63,7 @@ public class Alien extends Pet{
 
     /**
      * Play with alien.
+     * @override
      */
     public void play()
     {
@@ -58,6 +73,7 @@ public class Alien extends Pet{
 
     /**
      * Alien attends training.
+     * @override
      */
     public void train()
     {
@@ -67,10 +83,21 @@ public class Alien extends Pet{
 
     /**
      * Alien goes to the doctor.
+     * @override
      */
     public void toDoctor()
     {
         super.toDoctor();
         super.toDoctor();
+    }
+
+    /**
+     * Alien is given bath
+     * @override
+     */
+    public void giveBath()
+    {
+        super.giveBath();
+        super.giveBath();
     }
 }
