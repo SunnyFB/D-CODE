@@ -59,6 +59,7 @@ public class Pet
 
     /**
      * checks if pet is dead
+     * @return true if dead or false if alive
      */
     public boolean isDead()
     {
@@ -168,6 +169,7 @@ public class Pet
 
     /**
      * Pet is Hungry when hunger gets too high
+     * @param isVeryHungry true when pet is very hungry false if pet is not
      */
     public void hungry(Boolean isVeryHungry)
     {
@@ -207,7 +209,19 @@ public class Pet
     }
 
     /**
-     * returns health
+     * give pet a bath
+    */
+    public void giveBath()
+    {
+        hygiene++;
+        energy++;
+        boundValues();
+    }
+
+
+    /**
+     * rounds health than returns it
+     * @return health rounded to 1 decimal point
      */
     public double getHealth()
     {
@@ -215,6 +229,7 @@ public class Pet
     }
     /**
      * sets health to a new value
+     * @param newHealth the new value of health
      */
     public void setHealth(double newHealth)
     {
@@ -222,7 +237,8 @@ public class Pet
     }
     
     /**
-     * gets weight
+     * rounds weight than returns it
+     * @return weight rounded to 1 decimal point
      */
     public double getWeight()
     {
@@ -230,6 +246,7 @@ public class Pet
     }
     /**
      * sets weight to a new value
+     * @param newWeight the new value of weight
      */
     public void setWeight(double newWeight)
     {
@@ -237,7 +254,8 @@ public class Pet
     }
     
     /**
-     * returns happiness
+     * rounds happiness than returns it
+     * @return happiness rounded to 1 decimal point
      */
     public double getHappiness()
     {
@@ -245,6 +263,7 @@ public class Pet
     }
     /**
      * sets happiness to a new value
+     * @param newHappiness the new value of happiness
      */
     public void setHappiness(double newHappiness)
     {
@@ -252,7 +271,8 @@ public class Pet
     }
 
     /**
-     * returns hunger
+     * rounds fullness than returns it
+     * @return fullness rounded to 1 decimal point
      */
     public double getFullness()
     {
@@ -260,6 +280,7 @@ public class Pet
     }
     /**
      * sets hunger to a new value
+     * @param newFullness the new value of fullness
      */
     public void setFullness(double newFullness)
     {
@@ -301,8 +322,8 @@ public class Pet
     }
 
     /**
-     * returns a rounded decimal.
-     * used by the attribute get methods.
+     * returns a rounded decimal and used by the attribute get methods.
+     * @param num the number to be rounded to 1 decimal point
      */
     private double decimalRound(double num)
     {
