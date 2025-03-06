@@ -50,6 +50,14 @@ public class Pet
     }
     
     /**
+     * returns the drain rate for hygiene
+     */
+    public double hygieneDrain()
+    {
+        return 0.02;
+    }
+
+    /**
      * checks if pet is dead
      */
     public boolean isDead()
