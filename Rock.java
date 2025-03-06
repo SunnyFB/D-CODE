@@ -14,7 +14,8 @@ public class Rock extends Pet
     }
 
     /**
-     * Rock's happiness drain rate
+     * @return Rock's happiness drain rate
+     * @override
      */
     public double happinessDrain()
     {
@@ -22,7 +23,8 @@ public class Rock extends Pet
     }
 
     /**
-     * Rock's fullness drain rate
+     * @return Rock's fullness drain rate
+     * @override
      */
     public double fullnessDrain()
     {
@@ -30,7 +32,8 @@ public class Rock extends Pet
     }
 
     /**
-     * Rock's energy drain rate
+     * @return Rock's energy drain rate
+     * @override
      */
     public double energyDrain()
     {
@@ -38,7 +41,18 @@ public class Rock extends Pet
     }
 
     /**
-     * Rock's version of walk
+     * @return Rock's energy drain rate
+     * @override
+     */
+    public double hygieneDrain()
+    {
+        return 0;
+    }
+
+
+    /**
+     * @return Rock's version of walk
+     * @override
      */
     public void walk()
     {
@@ -47,7 +61,8 @@ public class Rock extends Pet
     }
 
     /**
-     * rock's version of play
+     * @return Rock's version of play
+     * @override
      */
     public void play()
     {
@@ -56,7 +71,8 @@ public class Rock extends Pet
     }
 
     /**
-     * rock's version of taking to doctor
+     * @return rock's version of taking to doctor
+     * @override
      */
     public void toDoctor()
     {
@@ -65,7 +81,8 @@ public class Rock extends Pet
     }
 
     /**
-     * rock's version on training
+     * @return rock's version on training
+     * @override
      */
     public void train()
     {
