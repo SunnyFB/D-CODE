@@ -141,6 +141,7 @@ public class Pet
         health += 2;
         energy -= 2;
         fullness -= 2;
+        hygiene -=2;
         boundValues();
         isHungry();
     }
@@ -200,6 +201,7 @@ public class Pet
         happiness++;
         energy--;
         fullness--;
+        hygiene--;
         boundValues();
         isHungry();
     }
@@ -265,7 +267,8 @@ public class Pet
     }
     
     /**
-     * returns energy
+     * rounds energy than returns it
+     * @return energy rounded to 1 decimal point
      */
     public double getEnergy()
     {
@@ -273,10 +276,28 @@ public class Pet
     }
     /**
      * sets energy to a new value
+     * @param newEnergy new value of energy
      */
     public void setEnergy(double newEnergy)
     {
         energy = newEnergy;
+    }
+
+    /**
+     * rounds hygiene than returns it
+     * @return hygiene rounded to 1 decimal point
+     */
+    public double getHygiene()
+    {
+        return decimalRound(hygiene);
+    }
+    /**
+     * Sets hygiene to a new value
+     * @param newHygiene new value of hygiene
+     */
+    public void setHygiene(double newHygiene)
+    {
+        energy = newHygiene;
     }
 
     /**
