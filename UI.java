@@ -4,12 +4,13 @@ import java.awt.event.*;
 public class UI extends Game{
     JFrame frame;
     JTextField fullnessField;
+    JTextField healthField;
     //variables to update Game
     public boolean feedFood = false;
     public boolean feedTreat = false;
     public boolean save = false;
 
-    public void openUI(Pet vPet){
+    public void openGameUI(Pet vPet){
         // Default Window Nonsense
         frame = new JFrame("Tamagotchi Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,8 +19,14 @@ public class UI extends Game{
         JPanel panel = new JPanel();
 
         JButton feedButton = new JButton("Feed");
+
+
         fullnessField = new JTextField("Fullness: " + vPet.getFullness());
         fullnessField.setEditable(false);
+
+        healthField = new JTextField("Health: " + vPet.getFullness());
+        healthField.setEditable(false);
+
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 feedFood = true;
@@ -37,6 +44,7 @@ public class UI extends Game{
 
         panel.add(feedButton);
         panel.add(fullnessField);
+        panel.add(healthField);
         panel.add(saveButton);
         frame.add(panel);
 
@@ -45,5 +53,6 @@ public class UI extends Game{
     public void update(Pet vPet){
         //Update the UI
         fullnessField.setText("Fullness: " + vPet.getFullness());
+        healthField.setText("Health: " + vPet.getHealth());
     }
 }
