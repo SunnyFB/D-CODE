@@ -5,7 +5,7 @@ public class Rock extends Pet
      */
     public Rock(double happiness)
     {
-        super(10,10,happiness,10,10);
+        super(10,10,happiness,10,10,10);
     }
 
     public Rock()

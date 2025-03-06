@@ -4,9 +4,9 @@ public class Alien extends Pet{
      * Alien is a subclass of Pet. Aliens are harder to take care of than normal pets.
      * They are drastically more affected by activities.
      */
-    public Alien(double fullness,double weight, double happiness,double energy,double health)
+    public Alien(double fullness,double weight, double happiness,double energy,double health,double hygiene)
     {
-        super(fullness,weight,happiness,energy,health);
+        super(fullness,weight,happiness,energy,health,hygiene);
     }
 
     public Alien()

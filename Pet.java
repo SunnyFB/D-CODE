@@ -2,16 +2,17 @@ import java.text.DecimalFormat;
 
 public class Pet
 {
-    private double health, weight, happiness, energy,fullness;
-    private final double maxHealth = 10.0, maxFullness = 10.0, maxHappiness = 10.0, maxWeight = 10.0, maxEnergy = 10.0;
+    private double health, weight, happiness, energy,fullness, hygiene;
+    private final double maxHealth = 10.0, maxFullness = 10.0, maxHappiness = 10.0, maxWeight = 10.0, maxEnergy = 10.0, maxHygiene = 10.0;
 
-    public Pet(double fullness,double weight, double happiness,double energy,double health)
+    public Pet(double fullness,double weight, double happiness,double energy,double health, double hygiene)
     {
        this.health = health;
        this.weight = weight;
        this.happiness = happiness;
        this.fullness = fullness;
        this.energy = energy;
+       this.hygiene = hygiene;
     }
 
     public Pet()
@@ -21,6 +22,7 @@ public class Pet
         happiness = maxHappiness;
         fullness = maxFullness;
         energy = maxEnergy;
+        hygiene = maxHygiene;
     }
 
     /**
@@ -48,6 +50,14 @@ public class Pet
     }
     
     /**
+     * returns the drain rate for hygiene
+     */
+    public double hygieneDrain()
+    {
+        return 0.02;
+    }
+
+    /**
      * checks if pet is dead
      */
     public boolean isDead()
@@ -65,9 +75,18 @@ public class Pet
      */
     public void boundValues()
     {
+        if (hygiene > maxHygiene)
+        {
+            hygiene = maxHygiene;
+        }
         if (happiness > maxHappiness)
         {
             happiness = maxHappiness;
+        }
+        if (fullness > maxFullness)
+        {
+            fullness = maxFullness;
+            weight++; //pet gets fatter if it gets fed too much
         }
         if (weight > maxWeight)
         {
@@ -80,11 +99,6 @@ public class Pet
         if (energy > maxEnergy)
         {
             energy = maxEnergy;
-        }
-        if (fullness > maxFullness)
-        {
-            fullness = maxFullness;
-            weight++;
         }
     }
 
@@ -112,6 +126,7 @@ public class Pet
         health++;
         energy--;
         fullness--;
+        hygiene--;
         boundValues();
         isHungry();
     }
@@ -135,12 +150,12 @@ public class Pet
      */
     public void feed(Boolean isTreat)
     {
-        if (isTreat)
+        if (isTreat) //feeds pet a treat
         {
             weight += 2;
             fullness += 0.5;
 
-        } else
+        } else //feeds pet a meal
         {
             weight++;
             health++;
@@ -264,6 +279,10 @@ public class Pet
         energy = newEnergy;
     }
 
+    /**
+     * returns a rounded decimal.
+     * used by the attribute get methods.
+     */
     private double decimalRound(double num)
     {
         DecimalFormat df = new DecimalFormat("#.#");

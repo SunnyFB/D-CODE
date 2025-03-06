@@ -1,11 +1,11 @@
 public class Cat extends Pet{
     /**
      * Cat is a subclass of Pet.
-     * Cats get hungry faster, tired faster, but don't get unhappy as fast
+     * Cats get hungry faster, tired faster, but don't get unhappy or dirty as fast
      */
-    public Cat(double fullness,double weight, double happiness,double energy,double health)
+    public Cat(double fullness,double weight, double happiness,double energy,double health, double hygiene)
     {
-        super(fullness,weight,happiness,energy,health);
+        super(fullness,weight,happiness,energy,health,hygiene);
     }
 
     public Cat()
