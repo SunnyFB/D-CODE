@@ -169,9 +169,15 @@ public class Game extends Main{
         ui.update(virtualPet);
     }
 
+    /**
+     * updates every second
+     */
     public void updateGame(){
-        //Runs once a second
         virtualPet.setFullness(virtualPet.getFullness() - virtualPet.fullnessDrain());
+        //virtualPet.setHappiness(virtualPet.getHappiness()- virtualPet.happinessDrain());
+        //virtualPet.setEnergy(virtualPet.getEnergy()-virtualPet.energyDrain());
+        //virtualPet.setHygiene(virtualPet.getHygiene()-virtualPet.hygieneDrain());
+
         //It is out of food
         
         if (virtualPet.getFullness() > 5){
