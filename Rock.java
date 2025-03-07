@@ -22,27 +22,27 @@ public class Rock extends Pet
     }
 
     /**
-     * @return Rock's happiness drain rate
-     * @override
-     */
-    public double happinessDrain()
-    {
-        return 0.05;
-    }
+         * @return Rock's happiness drain rate
+         */
+        @Override
+        public double happinessDrain()
+        {
+            return 0.05;
+        }
 
     /**
-     * @return Rock's fullness drain rate
-     * @override
-     */
-    public double fullnessDrain()
-    {
-        return 0;
-    }
+         * @return Rock's fullness drain rate
+         */
+        @Override
+        public double fullnessDrain()
+        {
+            return 0;
+        }
 
     /**
      * @return Rock's energy drain rate
-     * @override
      */
+    @Override
     public double energyDrain()
     {
         return 0;
@@ -50,8 +50,8 @@ public class Rock extends Pet
 
     /**
      * @return Rock's energy drain rate
-     * @override
      */
+    @Override
     public double hygieneDrain()
     {
         return 0;
@@ -59,9 +59,9 @@ public class Rock extends Pet
 
 
     /**
-     * @return Rock's version of walk
-     * @override
+     * Rock's version of walk
      */
+    @Override
     public void walk()
     {
         super.setHappiness(super.getHappiness() + 1);
@@ -69,9 +69,9 @@ public class Rock extends Pet
     }
 
     /**
-     * @return Rock's version of play
-     * @override
+     * Rock's version of play
      */
+    @Override
     public void play()
     {
         super.setHappiness(super.getHappiness() + 2);
@@ -79,9 +79,9 @@ public class Rock extends Pet
     }
 
     /**
-     * @return rock's version of taking to doctor
-     * @override
+     * Rock's version of taking to doctor
      */
+    @Override
     public void toDoctor()
     {
         super.setHappiness(super.getHappiness() - 1);
@@ -89,9 +89,9 @@ public class Rock extends Pet
     }
 
     /**
-     * @return rock's version on training
-     * @override
+     * rock's version on training
      */
+    @Override
     public void train()
     {
         super.setHappiness(super.getHappiness()+1);
