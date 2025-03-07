@@ -1,13 +1,25 @@
+/**
+ * Cat is a subclass of Pet.
+ * Cats get hungry faster, tired faster, but don't get unhappy or dirty as fast.
+ */
 public class Cat extends Pet{
     /**
-     * Cat is a subclass of Pet.
-     * Cats get hungry faster, tired faster, but don't get unhappy or dirty as fast
+     * Constructor for cat
+     * @param fullness measures hunger of the cat
+     * @param weight measures weight of the cat
+     * @param happiness measures happiness of the cat
+     * @param energy measures energy of the cat
+     * @param health measures health of the cat
+     * @param hygiene measures hygiene of the cat
      */
     public Cat(double fullness,double weight, double happiness,double energy,double health, double hygiene)
     {
         super(fullness,weight,happiness,energy,health,hygiene);
     }
 
+    /**
+     * no parameter constructor of cat
+     */
     public Cat()
     {
         super();

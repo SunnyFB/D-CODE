@@ -1,13 +1,21 @@
+/**
+ * Rock is a subclass of Pet. The pet rock only has happiness.
+ */
 public class Rock extends Pet
 {
+    
     /**
-     * Rock is a subclass of Pet. The pet rock only has happiness.
+     * Constructor for Rock
+     * @param happiness measures the happiness of the pet rock
      */
     public Rock(double happiness)
     {
         super(10,10,happiness,10,10,10);
     }
 
+    /**
+     * no parameter constructor of Rock
+     */
     public Rock()
     {
         super();

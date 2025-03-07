@@ -1,14 +1,25 @@
+/**
+ * Alien is a subclass of Pet. Aliens are harder to take care of than normal pets.
+ * They are drastically more affected by activities.
+ */
 public class Alien extends Pet{
-
     /**
-     * Alien is a subclass of Pet. Aliens are harder to take care of than normal pets.
-     * They are drastically more affected by activities.
+     * Constructor for alien
+     * @param fullness measures hunger of alien
+     * @param weight measures weight of alien
+     * @param happiness measures happiness of alien
+     * @param energy measures energy of alien
+     * @param health measures health of alien
+     * @param hygiene measures hygiene of alien
      */
     public Alien(double fullness,double weight, double happiness,double energy,double health,double hygiene)
     {
         super(fullness,weight,happiness,energy,health,hygiene);
     }
 
+    /**
+     * no parameter constructor of Alien
+     */
     public Alien()
     {
         super();

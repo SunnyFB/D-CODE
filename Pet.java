@@ -25,7 +25,7 @@ public class Pet
     }
 
     /**
-     * No parameter constructor for Pet
+     * No parameter constructor for Pet. Used for start of game.
      */
     public Pet()
     {
