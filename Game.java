@@ -21,6 +21,10 @@ public class Game extends Main{
     {
     }
 
+    /**
+     * Starts game. 
+     * If there is an exsisting save file, Game uses that, but if not, it creates a new one.
+     */
     public void start(){
         ui = new UI();
         // Handle Save Data
@@ -144,10 +148,12 @@ public class Game extends Main{
         }, uiBegin, uiTimeInterval);
     }
 
+    /**
+     * Updating from UI.
+     * Runs every 10 ms.
+     */
     private void updateFromUi()
     {
-        //Updating from what UI
-        //Runs once every 10 ms
         
         //Saving
         if (ui.save) save();
@@ -181,7 +187,7 @@ public class Game extends Main{
             System.out.println(virtualPet.getHealth());
         }
 
-        //Is it ded yet
+        //Is it dead yet
         if (virtualPet.isDead()){
             System.out.println("DEAD LOL U BAD");
         }
