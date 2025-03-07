@@ -79,6 +79,9 @@ public class Game extends Main{
         }
     }
 
+    /**
+     * Saves pet attributes to a text file
+     */
     public void save()
     {
         try {
@@ -87,7 +90,7 @@ public class Game extends Main{
             double happiness = virtualPet.getHappiness();
             double energy = virtualPet.getEnergy();
             double health = virtualPet.getHealth();
-            double hygene = virtualPet.getHygene();
+            double hygiene = virtualPet.getHygiene();
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(saveFile));
             /*
