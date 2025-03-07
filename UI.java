@@ -3,8 +3,14 @@ import java.awt.event.*;
 
 public class UI extends Game{
     JFrame frame;
-    JTextField hungerField;
-    public void openUI(Pet vPet){
+    JTextField fullnessField;
+    JTextField healthField;
+    //variables to update Game
+    public boolean feedFood = false;
+    public boolean feedTreat = false;
+    public boolean save = false;
+
+    public void openGameUI(Pet vPet){
         // Default Window Nonsense
         frame = new JFrame("Tamagotchi Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -13,33 +19,40 @@ public class UI extends Game{
         JPanel panel = new JPanel();
 
         JButton feedButton = new JButton("Feed");
-        hungerField = new JTextField("Hunger: " + vPet.getFullness());
-        hungerField.setEditable(false);
+
+
+        fullnessField = new JTextField("Fullness: " + vPet.getFullness());
+        fullnessField.setEditable(false);
+
+        healthField = new JTextField("Health: " + vPet.getFullness());
+        healthField.setEditable(false);
+
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
-                feed();
+                feedFood = true;
             }
         };
         feedButton.addActionListener(a1);
 
-        JButton save = new JButton("Save");
+        JButton saveButton = new JButton("Save");
         ActionListener a2 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
-                save();
+                save = true;
             }
         };
-        save.addActionListener(a2);
+        saveButton.addActionListener(a2);
 
         panel.add(feedButton);
-        panel.add(hungerField);
-        panel.add(save);
+        panel.add(fullnessField);
+        panel.add(healthField);
+        panel.add(saveButton);
         frame.add(panel);
 
         frame.setVisible(true);
     }
     public void update(Pet vPet){
         //Update the UI
-        hungerField.setText("Hunger: " + vPet.getFullness());
-        System.out.println("Hungerless"+vPet.getFullness());
+        fullnessField.setText("Fullness: " + vPet.getFullness());
+        healthField.setText("Health: " + vPet.getHealth());
     }
 }

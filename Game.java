@@ -45,6 +45,7 @@ public class Game extends Main{
                 System.out.println("New save file was created!");
         
                 // Loaded Save File
+                start();
             } else {
                         
                 String[] vars = new String[5];
@@ -62,16 +63,12 @@ public class Game extends Main{
                     Double.parseDouble(vars[1]), 
                     Double.parseDouble(vars[2]), 
                     Double.parseDouble(vars[3]), 
+                    Double.parseDouble(vars[4]), 
                     Double.parseDouble(vars[4]));
         
                 System.out.println("Save file loaded!");
-                System.out.println(virtualPet.getFullness());
-                System.out.println(virtualPet.getWeight());
-                System.out.println(virtualPet.getHappiness());
-                System.out.println(virtualPet.getEnergy());
-                System.out.println(virtualPet.getHealth());
         
-                ui.openUI(virtualPet);
+                ui.openGameUI(virtualPet);
                 gameLoop();
         
                 reader.close();
@@ -82,30 +79,36 @@ public class Game extends Main{
         }
     }
 
+    /**
+     * Saves pet attributes to a text file
+     */
     public void save()
     {
         try {
-            double hunger = virtualPet.getFullness();
+            double fullness = virtualPet.getFullness();
             double weight = virtualPet.getWeight();
             double happiness = virtualPet.getHappiness();
             double energy = virtualPet.getEnergy();
             double health = virtualPet.getHealth();
+            double hygiene = virtualPet.getHygiene();
 
             BufferedWriter writer = new BufferedWriter(new FileWriter(saveFile));
             /*
              * Order in which data should be saved, 
              * and used in pet constructor
-             * HUNGER
+             * fullness
              * WEIGHT
              * HAPPINESS
              * ENERGY
              * HEALTH
+             * hygiene
              */
-            writer.write(Double.toString(hunger));
+            writer.write(Double.toString(fullness));
             writer.write("\n" + Double.toString(weight));
             writer.write("\n" + Double.toString(happiness));
             writer.write("\n" + Double.toString(energy));
             writer.write("\n" + Double.toString(health));
+            writer.write("\n" + Double.toString(hygiene));
             writer.flush();
             writer.close();
         } catch (Exception e) {
@@ -116,27 +119,71 @@ public class Game extends Main{
 
 
     private void gameLoop() {
-        Timer timer = new Timer();
-        int begin = 0;
-        int timeInterval = 1000;
-    
-        timer.scheduleAtFixedRate(new TimerTask() {
+        //Game timer
+        Timer gameTimer = new Timer();
+        int gameBegin = 0;
+        int gameTimeInterval = 1000;
+        
+        gameTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
                 updateGame();
             }
-        }, begin, timeInterval);
+        }, gameBegin, gameTimeInterval);
+        
+        //UI timer
+        Timer uiTimer = new Timer();
+        int uiBegin = 0;
+        int uiTimeInterval = 10;
+        
+        uiTimer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                updateFromUi();
+            }
+        }, uiBegin, uiTimeInterval);
     }
 
-    private void updateGame()
+    private void updateFromUi()
     {
-        virtualPet.setFullness(virtualPet.getFullness() + .1);
+        //Updating from what UI
+        //Runs once every 10 ms
+        
+        //Saving
+        if (ui.save) save();
+        ui.save = false;
+        
+        //Feeding
+        if (ui.feedFood) virtualPet.feed(false);
+        ui.feedFood = false;
+
+        if (ui.feedTreat) virtualPet.feed(false);
+        ui.feedTreat = false;
+
         ui.update(virtualPet);
     }
 
-    //UI functions for now no changy pls
-    //No change it worky >:(
-    public void feed(){
-        virtualPet.feed(false);
+    public void updateGame(){
+        //Runs once a second
+        virtualPet.setFullness(virtualPet.getFullness() - virtualPet.fullnessDrain());
+        //It is out of food
+        
+        if (virtualPet.getFullness() > 5){
+            virtualPet.setWeight(virtualPet.getWeight()+.1);
+        }
+        
+        if (virtualPet.isHungry() == 0){
+            System.out.println("Not hungry");
+        }else if (virtualPet.isHungry() == 1){
+            System.out.println("Feed soon");
+        }else if (virtualPet.isHungry() == 2){
+            System.out.println("Feed Now!");
+            System.out.println(virtualPet.getHealth());
+        }
+
+        //Is it ded yet
+        if (virtualPet.isDead()){
+            System.out.println("DEAD LOL U BAD");
+        }
     }
 }
