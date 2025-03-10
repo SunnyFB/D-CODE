@@ -14,6 +14,7 @@ public class Game extends Main{
     Pet virtualPet;
     Scanner scanner;
     UI ui;
+    boolean isDead = false;
 
     private final String saveName = "petgamedata.txt";
 
@@ -173,29 +174,32 @@ public class Game extends Main{
      * updates every second
      */
     public void updateGame(){
-        virtualPet.setFullness(virtualPet.getFullness() - virtualPet.fullnessDrain());
-        //virtualPet.setHappiness(virtualPet.getHappiness()- virtualPet.happinessDrain());
-        //virtualPet.setEnergy(virtualPet.getEnergy()-virtualPet.energyDrain());
-        //virtualPet.setHygiene(virtualPet.getHygiene()-virtualPet.hygieneDrain());
-
-        //It is out of food
-        
-        if (virtualPet.getFullness() > 5){
-            virtualPet.setWeight(virtualPet.getWeight()+.1);
-        }
-        
-        if (virtualPet.isHungry() == 0){
-            System.out.println("Not hungry");
-        }else if (virtualPet.isHungry() == 1){
-            System.out.println("Feed soon");
-        }else if (virtualPet.isHungry() == 2){
-            System.out.println("Feed Now!");
-            System.out.println(virtualPet.getHealth());
-        }
-
-        //Is it dead yet
-        if (virtualPet.isDead()){
-            System.out.println("DEAD LOL U BAD");
+        if (!isDead)
+        {
+            virtualPet.setFullness(virtualPet.getFullness() - virtualPet.fullnessDrain());
+            //virtualPet.setHappiness(virtualPet.getHappiness()- virtualPet.happinessDrain());
+            //virtualPet.setEnergy(virtualPet.getEnergy()-virtualPet.energyDrain());
+            //virtualPet.setHygiene(virtualPet.getHygiene()-virtualPet.hygieneDrain());
+    
+            //It is out of food
+            
+            if (virtualPet.getFullness() > 5){
+                virtualPet.setWeight(virtualPet.getWeight()+.1);
+            }
+            
+            if (virtualPet.isHungry() == 0){
+                System.out.println("Not hungry");
+            }else if (virtualPet.isHungry() == 1){
+                System.out.println("Feed soon");
+            }else if (virtualPet.isHungry() == 2){
+                System.out.println("Feed Now!");
+                System.out.println(virtualPet.getHealth());
+            }
+    
+            //Is it dead yet
+            if (virtualPet.isDead()){
+                isDead = true;
+            }
         }
     }
 }

@@ -113,6 +113,12 @@ public class Pet
         {
             energy = maxEnergy;
         }
+        if (hygiene < 0) hygiene = 0;
+        if (happiness < 0) happiness = 0;
+        if (fullness < 0) fullness = 0;
+        if (weight < 0) weight = 0;
+        if (health < 0) health = 0;
+        if (energy < 0) energy = 0;
     }
 
     /**
@@ -251,6 +257,7 @@ public class Pet
     public void setHealth(double newHealth)
     {
         health = newHealth;
+        boundValues();
     }
     
     /**
@@ -268,6 +275,7 @@ public class Pet
     public void setWeight(double newWeight)
     {
         weight = newWeight;
+        boundValues();
     }
     
     /**
@@ -285,6 +293,7 @@ public class Pet
     public void setHappiness(double newHappiness)
     {
         happiness = newHappiness;
+        boundValues();
     }
 
     /**
@@ -302,6 +311,7 @@ public class Pet
     public void setFullness(double newFullness)
     {
         fullness = newFullness;
+        boundValues();
     }
     
     /**
@@ -319,6 +329,7 @@ public class Pet
     public void setEnergy(double newEnergy)
     {
         energy = newEnergy;
+        boundValues();
     }
 
     /**
@@ -336,6 +347,7 @@ public class Pet
     public void setHygiene(double newHygiene)
     {
         energy = newHygiene;
+        boundValues();
     }
 
     /**
