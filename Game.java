@@ -52,7 +52,7 @@ public class Game extends Main{
                 start();
             } else {
                         
-                String[] vars = new String[5];
+                String[] vars = new String[6];
                 BufferedReader reader = new BufferedReader(new FileReader(saveFile));
                 String line;
                 int i = 0;
@@ -68,7 +68,7 @@ public class Game extends Main{
                     Double.parseDouble(vars[2]), 
                     Double.parseDouble(vars[3]), 
                     Double.parseDouble(vars[4]), 
-                    Double.parseDouble(vars[4]));
+                    Double.parseDouble(vars[5]));
         
                 System.out.println("Save file loaded!");
         
