@@ -1,3 +1,4 @@
+package Tagagatchi.src;
 import javax.swing.SwingUtilities;
 
 public class Main

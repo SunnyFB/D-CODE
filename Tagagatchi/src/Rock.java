@@ -1,3 +1,4 @@
+package Tagagatchi.src;
 /**
  * Rock is a subclass of Pet. The pet rock only has happiness.
  */

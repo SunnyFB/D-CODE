@@ -1,3 +1,4 @@
+package Tagagatchi.src;
 /**
  * Dog is a subclass of Pet.
  * Dogs need more attention, and their happiness runs out faster.

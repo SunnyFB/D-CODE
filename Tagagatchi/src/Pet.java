@@ -1,3 +1,4 @@
+package Tagagatchi.src;
 import java.text.DecimalFormat;
 
 public class Pet
