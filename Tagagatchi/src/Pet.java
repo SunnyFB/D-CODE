@@ -216,17 +216,17 @@ public class Pet
      * Pet is Hungry when hunger gets too high
      * @param isVeryHungry true when pet is very hungry false if pet is not
      */
-    public void hungry(Boolean isVeryHungry)
+    public void hungry(boolean isVeryHungry)
     {
         if (isVeryHungry)
         {
-            weight -= 2;
-            happiness -= 2;
-            health--;
-            energy--;
+            weight -= .2;
+            happiness -= .2;
+            health -= .1;
+            energy -= .1;
         } else {
-            weight--;
-            happiness--;
+            weight -= .1;
+            happiness -= .1;
         }
     }
 
