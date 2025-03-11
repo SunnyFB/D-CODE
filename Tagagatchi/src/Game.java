@@ -200,6 +200,7 @@ public class Game extends Main{
             //Is it dead yet
             if (virtualPet.isDead()){
                 isDead = true;
+                System.out.println("I IS DED");
             }
         }
     }
