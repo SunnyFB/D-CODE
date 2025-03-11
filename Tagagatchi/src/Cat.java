@@ -1,3 +1,4 @@
+package Tagagatchi.src;
 /**
  * Cat is a subclass of Pet.
  * Cats get hungry faster, tired faster, but don't get unhappy or dirty as fast.

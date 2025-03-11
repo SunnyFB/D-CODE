@@ -1,3 +1,4 @@
+package Tagagatchi.src;
 /**
  * Alien is a subclass of Pet. Aliens are harder to take care of than normal pets.
  * They are drastically more affected by activities.

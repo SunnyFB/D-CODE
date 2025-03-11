@@ -1,5 +1,7 @@
+package Tagagatchi.src;
 import javax.swing.*;
 import java.awt.event.*;
+import com.formdev.flatlaf.*;
 
 public class UI extends Game{
     JFrame frame;
@@ -11,6 +13,7 @@ public class UI extends Game{
     public boolean save = false;
 
     public void openGameUI(Pet vPet){
+        FlatLightLaf.setup();
         // Default Window Nonsense
         frame = new JFrame("Tamagotchi Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

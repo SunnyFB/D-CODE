@@ -1,3 +1,4 @@
+package Tagagatchi.src;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -69,7 +70,7 @@ public class Game extends Main{
                     Double.parseDouble(vars[2]), 
                     Double.parseDouble(vars[3]), 
                     Double.parseDouble(vars[4]), 
-                    Double.parseDouble(vars[5]));
+                    Double.parseDouble(vars[4]));
         
                 System.out.println("Save file loaded!");
         
