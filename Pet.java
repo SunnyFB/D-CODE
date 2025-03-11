@@ -84,10 +84,11 @@ public class Pet
     }
 
     /**
-     * checks that all stats are not greater than their max
+     * checks that all stats are not greater than their max and lower than 0
      */
     public void boundValues()
     {
+        //checks if stats are above max
         if (hygiene > maxHygiene)
         {
             hygiene = maxHygiene;
@@ -113,12 +114,32 @@ public class Pet
         {
             energy = maxEnergy;
         }
-        if (hygiene < 0) hygiene = 0;
-        if (happiness < 0) happiness = 0;
-        if (fullness < 0) fullness = 0;
-        if (weight < 0) weight = 0;
-        if (health < 0) health = 0;
-        if (energy < 0) energy = 0;
+        
+        //checks if stats are negative
+        if (hygiene < 0) 
+        {
+            hygiene = 0;
+        }
+        if (happiness < 0) 
+        {
+            happiness = 0;
+        }
+        if (fullness < 0) 
+        {
+            fullness = 0;
+        }
+        if (weight < 0) 
+        {
+            weight = 0;
+        }
+        if (health < 0) 
+        {
+            health = 0;
+        }
+        if (energy < 0) 
+        {
+            energy = 0;
+        }
     }
 
     /**
