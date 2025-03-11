@@ -177,12 +177,11 @@ public class Game extends Main{
         if (!isDead)
         {
             virtualPet.setFullness(virtualPet.getFullness() - virtualPet.fullnessDrain());
-            //virtualPet.setHappiness(virtualPet.getHappiness()- virtualPet.happinessDrain());
-            //virtualPet.setEnergy(virtualPet.getEnergy()-virtualPet.energyDrain());
-            //virtualPet.setHygiene(virtualPet.getHygiene()-virtualPet.hygieneDrain());
+            virtualPet.setHappiness(virtualPet.getHappiness()- virtualPet.happinessDrain());
+            virtualPet.setEnergy(virtualPet.getEnergy()-virtualPet.energyDrain());
+            virtualPet.setHygiene(virtualPet.getHygiene()-virtualPet.hygieneDrain());
     
             //It is out of food
-            
             if (virtualPet.getFullness() > 5){
                 virtualPet.setWeight(virtualPet.getWeight()+.1);
             }
