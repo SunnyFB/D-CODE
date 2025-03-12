@@ -146,19 +146,14 @@ public class Pet
     /**
      * Checks if pet is Hungry. If it is it will call the hungry method.
      */
-    public int isHungry()
+    public void isHungry()
     {
         if (fullness <= 3)
         {
             hungry(true);
-            return 2;
         } else if (fullness <= 5)
         {
             hungry(false);
-            return 1;
-        } else 
-        {
-            return 0;
         }
     }
 
