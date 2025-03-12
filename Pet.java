@@ -162,6 +162,17 @@ public class Pet
     }
 
     /**
+     * Pet takes a nap
+     */
+    public void sleep()
+    {
+        energy += 2;
+        health++;
+        fullness -= .5;
+        boundValues();
+    }
+
+    /**
      * take pet for walk
      */
     public void walk()
