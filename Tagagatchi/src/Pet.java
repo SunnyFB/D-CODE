@@ -102,6 +102,7 @@ public class Pet
         {
             fullness = maxFullness;
             weight++; //pet gets fatter if it gets fed too much
+            health -= 2;
         }
         if (weight > maxWeight)
         {
