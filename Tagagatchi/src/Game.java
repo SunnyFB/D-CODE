@@ -14,6 +14,7 @@ public class Game extends Main{
     Pet virtualPet;
     UI ui;
     boolean isDead = false;
+    int timer = 0;
 
     private final String saveName = "petgamedata.txt";
 
@@ -37,10 +38,11 @@ public class Game extends Main{
         
                 BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
                 writer.write("0");
-                writer.write("\n100");
-                writer.write("\n100");
-                writer.write("\n100");
-                writer.write("\n100");
+                writer.write("\n10");
+                writer.write("\n10");
+                writer.write("\n10");
+                writer.write("\n10");
+                writer.write("\n0");
         
                 virtualPet = new Pet();
         
@@ -53,7 +55,7 @@ public class Game extends Main{
                 start();
             } else {
                         
-                String[] vars = new String[6];
+                String[] vars = new String[7];
                 BufferedReader reader = new BufferedReader(new FileReader(saveFile));
                 String line;
                 int i = 0;
@@ -69,7 +71,8 @@ public class Game extends Main{
                     Double.parseDouble(vars[2]), 
                     Double.parseDouble(vars[3]), 
                     Double.parseDouble(vars[4]), 
-                    Double.parseDouble(vars[4]));
+                    Double.parseDouble(vars[5]));
+                timer = Integer.parseInt(vars[6]);
         
                 System.out.println("Save file loaded!");
         
@@ -107,7 +110,8 @@ public class Game extends Main{
              * HAPPINESS
              * ENERGY
              * HEALTH
-             * hygiene
+             * HYGIENE
+             * TIMER
              */
             writer.write(Double.toString(fullness));
             writer.write("\n" + Double.toString(weight));
@@ -115,6 +119,7 @@ public class Game extends Main{
             writer.write("\n" + Double.toString(energy));
             writer.write("\n" + Double.toString(health));
             writer.write("\n" + Double.toString(hygiene));
+            writer.write("\n" + Integer.toString(timer));
             writer.flush();
             writer.close();
         } catch (Exception e) {
@@ -133,7 +138,8 @@ public class Game extends Main{
         gameTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                updateGame();
+                if(!ui.paused)
+                    updateGame();
             }
         }, gameBegin, gameTimeInterval);
         

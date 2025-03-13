@@ -12,7 +12,7 @@ public class UI extends Game{
     //variables to update Game
     public boolean feedFood = false;
     public boolean feedTreat = false;
-    public boolean save = false;
+    public boolean save = false, paused = false;
 
     public void openGameUI(Pet vPet){
         FlatLightLaf.setup();
@@ -37,7 +37,8 @@ public class UI extends Game{
 
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
-                feedFood = true;
+                if (!paused)
+                    feedFood = true;
             }
         };
         feedButton.addActionListener(a1);
@@ -45,16 +46,26 @@ public class UI extends Game{
         JButton saveButton = new JButton("Save");
         ActionListener a2 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
-                save = true;
+                if (!paused)
+                    save = true;
             }
         };
         saveButton.addActionListener(a2);
+
+        JButton pauseButton = new JButton("Pause");
+        ActionListener a3 = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                paused = !paused;
+            }
+        };
+        pauseButton.addActionListener(a3);
 
         panel.add(feedButton);
         panel.add(fullnessField);
         panel.add(healthField);
         panel.add(weightField);
         panel.add(saveButton);
+        panel.add(pauseButton);
         frame.add(panel);
 
         frame.setVisible(true);
