@@ -76,12 +76,7 @@ public class Pet
      */
     public boolean isDead()
     {
-        if ((health <= 0)||(weight <= 0))
-        {
-            return true;
-        } else {
-            return false;
-        }
+        return (health <= 0)||(weight <= 0);
     }
 
     /**

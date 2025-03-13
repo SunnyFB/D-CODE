@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Scanner;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -13,7 +12,6 @@ public class Game extends Main{
 
     File saveFile;
     Pet virtualPet;
-    Scanner scanner;
     UI ui;
     boolean isDead = false;
 
@@ -27,6 +25,7 @@ public class Game extends Main{
      * Starts game. 
      * If there is an exsisting save file, Game uses that, but if not, it creates a new one.
      */
+    @SuppressWarnings({"CallToPrintStackTrace", "UseSpecificCatch"})
     public void start(){
         ui = new UI();
         // Handle Save Data
@@ -88,6 +87,7 @@ public class Game extends Main{
     /**
      * Saves pet attributes to a text file
      */
+    @SuppressWarnings("CallToPrintStackTrace")
     public void save()
     {
         try {
