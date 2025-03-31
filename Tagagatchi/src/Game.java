@@ -15,6 +15,7 @@ public class Game extends Main{
     UI ui;
     boolean isDead = false;
     int timer = 0;
+    String petType = " ";
 
     private final String saveName = "petgamedata.txt";
 
@@ -45,7 +46,18 @@ public class Game extends Main{
                 writer.write("\n0");
                 writer.write("\n0");
         
-                virtualPet = new Pet();
+                if(petType.equals("cat"))
+                {
+                    virtualPet = new Cat();
+                } else if (petType.equals("dog"))
+                {
+                    virtualPet = new Dog();
+                } else if (petType.equals("alien"))
+                {
+                    virtualPet = new Alien();
+                } else {
+                    virtualPet = new Pet();
+                }
         
                 writer.flush();
                 writer.close();
@@ -67,12 +79,39 @@ public class Game extends Main{
                     i++;
                 }
         
-                virtualPet = new Pet(Double.parseDouble(vars[0]), 
-                    Double.parseDouble(vars[1]), 
-                    Double.parseDouble(vars[2]), 
+                if(petType.equals("cat"))
+                {
+                    virtualPet = new Cat(Double.parseDouble(vars[0]),
+                    Double.parseDouble(vars[1]),
+                    Double.parseDouble(vars[2]),
                     Double.parseDouble(vars[3]), 
                     Double.parseDouble(vars[4]), 
                     Double.parseDouble(vars[5]));
+                } else if (petType.equals("dog"))
+                {
+                    virtualPet = new Dog(Double.parseDouble(vars[0]),
+                    Double.parseDouble(vars[1]),
+                    Double.parseDouble(vars[2]),
+                    Double.parseDouble(vars[3]), 
+                    Double.parseDouble(vars[4]), 
+                    Double.parseDouble(vars[5]));
+                } else if (petType.equals("alien"))
+                {
+                    virtualPet = new Alien(Double.parseDouble(vars[0]),
+                        Double.parseDouble(vars[1]),
+                        Double.parseDouble(vars[2]),
+                        Double.parseDouble(vars[3]), 
+                        Double.parseDouble(vars[4]), 
+                        Double.parseDouble(vars[5]));
+                } else {
+                    virtualPet = new Pet(Double.parseDouble(vars[0]), 
+                        Double.parseDouble(vars[1]), 
+                        Double.parseDouble(vars[2]), 
+                        Double.parseDouble(vars[3]), 
+                        Double.parseDouble(vars[4]), 
+                        Double.parseDouble(vars[5]));
+                }
+
                 timer = Integer.parseInt(vars[6]);
         
                 System.out.println("Save file loaded!");
