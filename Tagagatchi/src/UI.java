@@ -8,6 +8,7 @@ public class UI extends Game{
     JTextField fullnessField;
     JTextField healthField;
     JTextField weightField;
+    JProgressBar fullnessBar;
 
     //variables to update Game
     public boolean feedFood = false;
@@ -28,6 +29,8 @@ public class UI extends Game{
 
         fullnessField = new JTextField("Fullness: " + vPet.getFullness());
         fullnessField.setEditable(false);
+        fullnessBar = new JProgressBar(0, 100);
+        fullnessBar.setValue((int) (vPet.getFullness() * 10));
 
         healthField = new JTextField("Health: " + vPet.getFullness());
         healthField.setEditable(false);
@@ -56,6 +59,10 @@ public class UI extends Game{
         ActionListener a3 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 paused = !paused;
+                if (paused)
+                    pauseButton.setText("Unpause");
+                if (!paused)
+                    pauseButton.setText("Pause");
             }
         };
         pauseButton.addActionListener(a3);
@@ -66,6 +73,7 @@ public class UI extends Game{
         panel.add(weightField);
         panel.add(saveButton);
         panel.add(pauseButton);
+        panel.add(fullnessBar);
         frame.add(panel);
 
         frame.setVisible(true);
@@ -75,5 +83,6 @@ public class UI extends Game{
         fullnessField.setText("Fullness: " + vPet.getFullness());
         healthField.setText("Health: " + vPet.getHealth());
         weightField.setText("Weight: " + vPet.getWeight());
+        fullnessBar.setValue((int) (vPet.getFullness() * 10));
     }
 }
