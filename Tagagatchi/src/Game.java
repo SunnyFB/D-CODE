@@ -37,7 +37,7 @@ public class Game extends Main{
             if (saveFile.createNewFile()) {
         
                 BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
-                writer.write("0");
+                writer.write("5");
                 writer.write("\n10");
                 writer.write("\n10");
                 writer.write("\n10");
