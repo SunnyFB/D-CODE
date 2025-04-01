@@ -47,20 +47,12 @@ public class Game extends Main{
                 writer.write("\n0");
                 writer.write("\n0");
         
-                petType = ui.getPetType();
-
-                if(petType.equals("cat"))
-                {
-                    virtualPet = new Cat();
-                } else if (petType.equals("dog"))
-                {
-                    virtualPet = new Dog();
-                } else if (petType.equals("alien"))
-                {
-                    virtualPet = new Alien();
-                } else {
-                    virtualPet = new Pet();
-                }
+                virtualPet = switch (petType) {
+                    case "cat" -> new Cat();
+                    case "dog" -> new Dog();
+                    case "alien" -> new Alien();
+                    default -> new Pet();
+                };
         
                 writer.flush();
                 writer.close();
@@ -84,38 +76,32 @@ public class Game extends Main{
 
                 petType = vars[7]; //gets pet type from the file
         
-                if(petType.equals("cat"))
-                {
-                    virtualPet = new Cat(Double.parseDouble(vars[0]),
-                    Double.parseDouble(vars[1]),
-                    Double.parseDouble(vars[2]),
-                    Double.parseDouble(vars[3]), 
-                    Double.parseDouble(vars[4]), 
-                    Double.parseDouble(vars[5]));
-                } else if (petType.equals("dog"))
-                {
-                    virtualPet = new Dog(Double.parseDouble(vars[0]),
-                    Double.parseDouble(vars[1]),
-                    Double.parseDouble(vars[2]),
-                    Double.parseDouble(vars[3]), 
-                    Double.parseDouble(vars[4]), 
-                    Double.parseDouble(vars[5]));
-                } else if (petType.equals("alien"))
-                {
-                    virtualPet = new Alien(Double.parseDouble(vars[0]),
-                        Double.parseDouble(vars[1]),
-                        Double.parseDouble(vars[2]),
-                        Double.parseDouble(vars[3]), 
-                        Double.parseDouble(vars[4]), 
-                        Double.parseDouble(vars[5]));
-                } else {
-                    virtualPet = new Pet(Double.parseDouble(vars[0]), 
-                        Double.parseDouble(vars[1]), 
-                        Double.parseDouble(vars[2]), 
-                        Double.parseDouble(vars[3]), 
-                        Double.parseDouble(vars[4]), 
-                        Double.parseDouble(vars[5]));
-                }
+                virtualPet = switch (petType) {
+                    case "cat" -> new Cat(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                    case "dog" -> new Dog(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                    case "alien" -> new Alien(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                    default -> new Pet(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                };
 
                 timer = Integer.parseInt(vars[6]);
         

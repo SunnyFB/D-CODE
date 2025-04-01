@@ -1,7 +1,11 @@
 package Tagagatchi.src;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class UI extends Game{
     JFrame frame;
@@ -57,14 +61,29 @@ public class UI extends Game{
         };
         saveButton.addActionListener(a2);
 
-        JButton pauseButton = new JButton("Pause");
+        JButton pauseButton = new JButton();
         ActionListener a3 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
+                BufferedImage unscaled;
+                Image img;
+                ImageIcon icon = new ImageIcon(this.getClass().getResource("pause.png"));
                 paused = !paused;
-                if (paused)
-                    pauseButton.setText("Unpause");
-                if (!paused)
-                    pauseButton.setText("Pause");
+                    try {
+                        if (paused)
+                        {
+                            unscaled = ImageIO.read(this.getClass().getResource("start.png"));
+                            img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+                            icon = new ImageIcon(img);
+                        } else {
+                            unscaled = ImageIO.read(this.getClass().getResource("pause.png"));
+                            img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+                            icon = new ImageIcon(img);
+                        }
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                pauseButton.setIcon(icon);
             }
         };
         pauseButton.addActionListener(a3);
