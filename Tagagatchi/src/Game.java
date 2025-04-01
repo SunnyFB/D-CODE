@@ -8,14 +8,15 @@ import java.io.FileWriter;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class Game extends Main{
 
+    String petType;
     File saveFile;
     Pet virtualPet;
     UI ui;
     boolean isDead = false;
     int timer = 0;
-    String petType = " ";
 
     private final String saveName = "petgamedata.txt";
 
@@ -46,6 +47,8 @@ public class Game extends Main{
                 writer.write("\n0");
                 writer.write("\n0");
         
+                petType = ui.getPetType();
+
                 if(petType.equals("cat"))
                 {
                     virtualPet = new Cat();
@@ -68,7 +71,7 @@ public class Game extends Main{
                 start();
             } else {
                         
-                String[] vars = new String[7];
+                String[] vars = new String[8];
                 BufferedReader reader = new BufferedReader(new FileReader(saveFile));
                 String line;
                 int i = 0;
@@ -78,6 +81,8 @@ public class Game extends Main{
                     System.out.println(vars[i]);
                     i++;
                 }
+
+                petType = vars[7]; //gets pet type from the file
         
                 if(petType.equals("cat"))
                 {
@@ -160,6 +165,7 @@ public class Game extends Main{
             writer.write("\n" + Double.toString(health));
             writer.write("\n" + Double.toString(hygiene));
             writer.write("\n" + Integer.toString(timer));
+            writer.write(petType);
             writer.flush();
             writer.close();
         } catch (Exception e) {

@@ -14,6 +14,8 @@ public class UI extends Game{
     public boolean feedTreat = false;
     public boolean save = false, paused = false;
 
+    public String petType;
+
     public void openGameUI(Pet vPet){
         FlatLightLaf.setup();
         // Default Window Nonsense
@@ -70,10 +72,16 @@ public class UI extends Game{
 
         frame.setVisible(true);
     }
+
     public void update(Pet vPet){
         //Update the UI
         fullnessField.setText("Fullness: " + vPet.getFullness());
         healthField.setText("Health: " + vPet.getHealth());
         weightField.setText("Weight: " + vPet.getWeight());
+    }
+
+    public String getPetType()
+    {
+        return petType;
     }
 }
