@@ -207,6 +207,9 @@ public class Game extends Main{
         if (ui.feedTreat) virtualPet.feed(false);
         ui.feedTreat = false;
 
+        if (ui.play) virtualPet.play();
+        ui.play = false;
+
         ui.update(virtualPet);
     }
 
