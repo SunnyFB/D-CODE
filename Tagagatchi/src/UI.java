@@ -29,12 +29,6 @@ public class UI extends Game{
 
         JPanel panel = new JPanel();
 
-        JButton doctorButton = new JButton("Take to Doctor");
-        JButton trainButton = new JButton("Teach a Trick");
-        JButton bathButton = new JButton("Bath Time");
-        JButton napButton = new JButton("Nap Time");
-
-
 
         fullnessField = new JTextField("Fullness: " + vPet.getFullness());
         fullnessField.setEditable(false);
@@ -81,6 +75,44 @@ public class UI extends Game{
         };
         walkButton.addActionListener(a5);
 
+        JButton doctorButton = new JButton("Take to Doctor");
+        ActionListener a6 = new ActionListener(){
+            public void actionPerformed(ActionEvent ae)
+            {
+                if (!paused)
+                    doctor = true;
+            }
+        };
+        doctorButton.addActionListener(a6);
+
+        JButton trainButton = new JButton("Teach a Trick");
+        ActionListener a7 = new ActionListener(){
+            public void actionPerformed(ActionEvent ae)
+            {
+                if (!paused)
+                    trick = true;
+            }
+        };
+        trainButton.addActionListener(a7);
+
+        JButton bathButton = new JButton("Bath Time");
+        ActionListener a8 = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    bath = true;
+            }
+        };
+        bathButton.addActionListener(a8);
+
+        JButton napButton = new JButton("Nap Time");
+        ActionListener a9 = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    nap = true;
+            }
+        };
+        napButton.addActionListener(a9);
+
         JButton saveButton = new JButton("Save");
         ActionListener a2 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
@@ -102,6 +134,10 @@ public class UI extends Game{
         panel.add(feedButton);
         panel.add(playButton);
         panel.add(walkButton);
+        panel.add(doctorButton);
+        panel.add(trainButton);
+        panel.add(bathButton);
+        panel.add(napButton);
 
         //pet attributes
         panel.add(fullnessField);

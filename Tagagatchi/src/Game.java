@@ -165,7 +165,7 @@ public class Game extends Main{
             writer.write("\n" + Double.toString(health));
             writer.write("\n" + Double.toString(hygiene));
             writer.write("\n" + Integer.toString(timer));
-            writer.write(petType);
+            writer.write("\n" + petType);
             writer.flush();
             writer.close();
         } catch (Exception e) {
@@ -222,6 +222,21 @@ public class Game extends Main{
 
         if (ui.play) virtualPet.play();
         ui.play = false;
+
+        if (ui.walk) virtualPet.walk();
+        ui.walk = false;
+
+        if (ui.doctor) virtualPet.toDoctor();
+        ui.doctor = false;
+
+        if (ui.trick) virtualPet.train();
+        ui.trick = false;
+
+        if (ui.bath) virtualPet.giveBath();
+        ui.bath = false;
+
+        if (ui.nap) virtualPet.sleep();
+        ui.nap = false;
 
         ui.update(virtualPet);
     }
