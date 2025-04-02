@@ -29,8 +29,12 @@ public class UI extends Game{
 
         JPanel panel = new JPanel();
 
-        JButton feedButton = new JButton("Feed");
-        JButton playButton = new JButton("Play");
+        JButton walkButton = new JButton("Walk");
+        JButton doctorButton = new JButton("Take to Doctor");
+        JButton trainButton = new JButton("Teach a Trick");
+        JButton bathButton = new JButton("Bath Time");
+        JButton napButton = new JButton("Nap Time");
+
 
 
         fullnessField = new JTextField("Fullness: " + vPet.getFullness());
@@ -51,6 +55,7 @@ public class UI extends Game{
         happinessField = new JTextField("Happiness: " + vPet.getHappiness());
         happinessField.setEditable(false);
 
+        JButton feedButton = new JButton("Feed"); //button to feed pet
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 if (!paused)
@@ -59,6 +64,7 @@ public class UI extends Game{
         };
         feedButton.addActionListener(a1);
 
+        JButton playButton = new JButton("Play"); //button to play with pet
         ActionListener a4 = new ActionListener(){
             public void actionPerformed(ActionEvent ae) {
                 if (!paused)
@@ -111,6 +117,7 @@ public class UI extends Game{
         weightField.setText("Weight: " + vPet.getWeight());
         happinessField.setText("Happiness: " + vPet.getHappiness());
         hygieneField.setText("Hygiene: " + vPet.getHygiene());
+        energyField.setText("Engery: " + vPet.getEnergy());
     }
 
     public String getPetType()
