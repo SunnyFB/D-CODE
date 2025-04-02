@@ -102,6 +102,7 @@ public class Pet
         if (weight > maxWeight)
         {
             weight = maxWeight;
+            health--;
         }
         if (health > maxHealth)
         {

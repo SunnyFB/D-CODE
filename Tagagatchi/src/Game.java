@@ -8,8 +8,10 @@ import java.io.FileWriter;
 import java.util.Timer;
 import java.util.TimerTask;
 
+
 public class Game extends Main{
 
+    String petType;
     File saveFile;
     Pet virtualPet;
     UI ui;
@@ -37,7 +39,7 @@ public class Game extends Main{
             if (saveFile.createNewFile()) {
         
                 BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
-                writer.write("0");
+                writer.write("5");
                 writer.write("\n10");
                 writer.write("\n10");
                 writer.write("\n10");
@@ -45,7 +47,12 @@ public class Game extends Main{
                 writer.write("\n0");
                 writer.write("\n0");
         
-                virtualPet = new Pet();
+                virtualPet = switch (petType) {
+                    case "cat" -> new Cat();
+                    case "dog" -> new Dog();
+                    case "alien" -> new Alien();
+                    default -> new Pet();
+                };
         
                 writer.flush();
                 writer.close();
@@ -56,7 +63,7 @@ public class Game extends Main{
                 start();
             } else {
                         
-                String[] vars = new String[7];
+                String[] vars = new String[8];
                 BufferedReader reader = new BufferedReader(new FileReader(saveFile));
                 String line;
                 int i = 0;
@@ -66,13 +73,36 @@ public class Game extends Main{
                     System.out.println(vars[i]);
                     i++;
                 }
+
+                petType = vars[7]; //gets pet type from the file
         
-                virtualPet = new Pet(Double.parseDouble(vars[0]), 
-                    Double.parseDouble(vars[1]), 
-                    Double.parseDouble(vars[2]), 
-                    Double.parseDouble(vars[3]), 
-                    Double.parseDouble(vars[4]), 
-                    Double.parseDouble(vars[5]));
+                virtualPet = switch (petType) {
+                    case "cat" -> new Cat(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                    case "dog" -> new Dog(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                    case "alien" -> new Alien(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                    default -> new Pet(Double.parseDouble(vars[0]),
+                            Double.parseDouble(vars[1]),
+                            Double.parseDouble(vars[2]),
+                            Double.parseDouble(vars[3]),
+                            Double.parseDouble(vars[4]),
+                            Double.parseDouble(vars[5]));
+                };
+
                 timer = Integer.parseInt(vars[6]);
         
                 System.out.println("Save file loaded!");
@@ -121,6 +151,7 @@ public class Game extends Main{
             writer.write("\n" + Double.toString(health));
             writer.write("\n" + Double.toString(hygiene));
             writer.write("\n" + Integer.toString(timer));
+            writer.write(petType);
             writer.flush();
             writer.close();
         } catch (Exception e) {
