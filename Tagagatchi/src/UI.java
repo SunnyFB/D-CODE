@@ -14,6 +14,7 @@ public class UI extends Game{
     JTextField fullnessField;
     JTextField healthField;
     JTextField weightField;
+    JProgressBar fullnessBar;
 
     //variables to update Game
     public boolean feedFood = false;
@@ -29,6 +30,7 @@ public class UI extends Game{
         frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        JPanel panel = new JPanel();
         JPanel buttonPanel = new JPanel();
         JPanel statPanel = new JPanel();
         JPanel messagePanel = new JPanel();

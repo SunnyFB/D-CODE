@@ -11,7 +11,7 @@ import java.util.TimerTask;
 
 public class Game extends Main{
 
-    String petType;
+    String petType = "blob";
     File saveFile;
     Pet virtualPet;
     UI ui;
@@ -46,6 +46,7 @@ public class Game extends Main{
                 writer.write("\n10");
                 writer.write("\n0");
                 writer.write("\n0");
+                writer.write("\n" + petType);
         
                 virtualPet = switch (petType) {
                     case "cat" -> new Cat();
@@ -151,7 +152,7 @@ public class Game extends Main{
             writer.write("\n" + Double.toString(health));
             writer.write("\n" + Double.toString(hygiene));
             writer.write("\n" + Integer.toString(timer));
-            writer.write(petType);
+            writer.write("\n" + petType);
             writer.flush();
             writer.close();
         } catch (Exception e) {
