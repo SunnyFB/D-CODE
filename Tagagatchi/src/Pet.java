@@ -211,6 +211,7 @@ public class Pet
             health++;
             energy++;
             fullness++;
+            setHygiene(hygiene - .5);
         }
         boundValues();
     }

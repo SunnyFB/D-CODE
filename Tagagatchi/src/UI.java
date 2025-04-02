@@ -162,6 +162,7 @@ public class UI extends Game{
         fullnessField.setText("Fullness: " + vPet.getFullness());
         healthField.setText("Health: " + vPet.getHealth());
         weightField.setText("Weight: " + vPet.getWeight());
+        fullnessBar.setValue((int) (vPet.getFullness() * 10));
     }
 
     public String getPetType()
