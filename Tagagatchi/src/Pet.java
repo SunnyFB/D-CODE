@@ -161,7 +161,6 @@ public class Pet
     {
         energy += 2;
         health++;
-        fullness -= .5;
         boundValues();
     }
 
