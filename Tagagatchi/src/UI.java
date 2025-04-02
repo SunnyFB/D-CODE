@@ -15,7 +15,7 @@ public class UI extends Game{
     //variables to update Game
     public boolean feedFood = false;
     public boolean feedTreat = false;
-    public boolean play = false;
+    public boolean play = false, walk = false, doctor = false, trick = false, bath = false, nap = false;
     public boolean save = false, paused = false;
 
     public String petType;
@@ -29,7 +29,6 @@ public class UI extends Game{
 
         JPanel panel = new JPanel();
 
-        JButton walkButton = new JButton("Walk");
         JButton doctorButton = new JButton("Take to Doctor");
         JButton trainButton = new JButton("Teach a Trick");
         JButton bathButton = new JButton("Bath Time");
@@ -73,6 +72,15 @@ public class UI extends Game{
         };
         playButton.addActionListener(a4);
 
+        JButton walkButton = new JButton("Walk");
+        ActionListener a5 = new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    walk = true;
+            }
+        };
+        walkButton.addActionListener(a5);
+
         JButton saveButton = new JButton("Save");
         ActionListener a2 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
@@ -93,6 +101,7 @@ public class UI extends Game{
         //activity buttons
         panel.add(feedButton);
         panel.add(playButton);
+        panel.add(walkButton);
 
         //pet attributes
         panel.add(fullnessField);
