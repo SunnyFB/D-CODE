@@ -1,13 +1,15 @@
 package Tagagatchi.src;
 import javax.swing.*;
+
+import java.awt.BorderLayout;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
 
 public class UI extends Game{
     JFrame frame;
-    JTextField fullnessField;
-    JTextField healthField;
-    JTextField weightField;
+    JTextArea fullnessField;
+    JTextArea healthField;
+    JTextArea weightField;
 
     //variables to update Game
     public boolean feedFood = false;
@@ -18,23 +20,19 @@ public class UI extends Game{
         FlatLightLaf.setup();
         // Default Window Nonsense
         frame = new JFrame("Tamagotchi Test");
+        frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-        JPanel panel = new JPanel();
+        JPanel buttonPanel = new JPanel();
+        JPanel statPanel = new JPanel();
+        JPanel messagePanel = new JPanel();
+        JPanel imagePanel = new JPanel();
+
+
+        //button panel
+        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
 
         JButton feedButton = new JButton("Feed");
-
-
-        fullnessField = new JTextField("Fullness: " + vPet.getFullness());
-        fullnessField.setEditable(false);
-
-        healthField = new JTextField("Health: " + vPet.getFullness());
-        healthField.setEditable(false);
-
-        weightField = new JTextField("Health: " + vPet.getFullness());
-        weightField.setEditable(false);
-
         ActionListener a1 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 if (!paused)
@@ -60,13 +58,35 @@ public class UI extends Game{
         };
         pauseButton.addActionListener(a3);
 
-        panel.add(feedButton);
-        panel.add(fullnessField);
-        panel.add(healthField);
-        panel.add(weightField);
-        panel.add(saveButton);
-        panel.add(pauseButton);
-        frame.add(panel);
+        buttonPanel.add(feedButton);
+        buttonPanel.add(saveButton);
+        buttonPanel.add(pauseButton);
+
+        // Stats/field panel
+        statPanel.setLayout(new BoxLayout(statPanel, BoxLayout.PAGE_AXIS));
+
+        fullnessField = new JTextArea("Fullness: " + vPet.getFullness());
+        fullnessField.setEditable(false);
+
+        healthField = new JTextArea("Health: " + vPet.getFullness());
+        healthField.setEditable(false);
+
+        weightField = new JTextArea("Weight: " + vPet.getFullness());
+        weightField.setEditable(false);
+
+        statPanel.add(fullnessField);
+        statPanel.add(healthField);
+        statPanel.add(weightField);
+
+        //Message frame
+
+        //Image frame
+
+        //Add to JFrame
+        frame.add(buttonPanel, BorderLayout.WEST);
+        frame.add(statPanel, BorderLayout.EAST);
+        frame.add(imagePanel, BorderLayout.CENTER);
+        frame.add(messagePanel, BorderLayout.SOUTH);
 
         frame.setVisible(true);
     }
