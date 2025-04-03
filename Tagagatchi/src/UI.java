@@ -3,10 +3,12 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class UI extends Game{
@@ -31,15 +33,12 @@ public class UI extends Game{
         FlatLightLaf.setup();
         // Default Window Nonsense
         frame = new JFrame("Tamagotchi Test");
-        frame.setSize(600, 220);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Make main panel
         JPanel panel = new JPanel(null);
 
         //BUTTONS
-
-
 
         JButton feedButton = new JButton("Feed Food"); //button to feed pet
         feedButton.setBounds(0,0,100,20);
@@ -50,6 +49,7 @@ public class UI extends Game{
             }
         };
         feedButton.addActionListener(feedButtonAL);
+        panel.add(feedButton);
         
         JButton treatButton = new JButton("Feed Treat"); //button to feed pet
         treatButton.setBounds(100,0,100,20);
@@ -60,6 +60,7 @@ public class UI extends Game{
             }
         };
         treatButton.addActionListener(treatButtonAL);
+        panel.add(treatButton);
 
         JButton saveButton = new JButton("Save");
         saveButton.setBounds(200,200,180,20);
@@ -70,34 +71,44 @@ public class UI extends Game{
             }
         };
         saveButton.addActionListener(a2);
+        panel.add(saveButton);
 
         JButton pauseButton = new JButton();
-        pauseButton.setBounds(180,0,20,20);
+        pauseButton.setBounds(380,200,20,20);
+        //Set button initially
+        try{
+            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/pause.png"));
+            Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            pauseButton.setIcon(icon);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         ActionListener pauseButtonAL = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 BufferedImage unscaled;
                 Image img;
-                ImageIcon icon = new ImageIcon(this.getClass().getResource("pause.png"));
+                ImageIcon icon;
                 paused = !paused;
                     try {
                         if (paused)
                         {
-                            unscaled = ImageIO.read(this.getClass().getResource("start.png"));
+                            unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/start.png"));
                             img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
                             icon = new ImageIcon(img);
                         } else {
-                            unscaled = ImageIO.read(this.getClass().getResource("pause.png"));
+                            unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/pause.png"));
                             img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
                             icon = new ImageIcon(img);
                         }
+                        pauseButton.setIcon(icon);
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
-                pauseButton.setIcon(icon);
             }
         };
         pauseButton.addActionListener(pauseButtonAL);
+        panel.add(pauseButton);
 
         JButton doctorButton = new JButton("Take to Doctor");
         ActionListener doctorButtonAL = new ActionListener(){
@@ -146,6 +157,21 @@ public class UI extends Game{
         };
         walkButton.addActionListener(walkButtonAL);
 
+        //BLOB IMAGE
+        JLabel blobImage = new JLabel();
+        try{
+            BufferedImage blobImageFile = ImageIO.read(this.getClass().getResource("sprites/pet/meh.png"));
+            Image big = blobImageFile.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+            blobImage = new JLabel(new ImageIcon(big));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        blobImage.setBounds(200,0,200,200);
+        frame.add(blobImage);
+
+
+
+
 
 
         //Fullness
@@ -172,9 +198,7 @@ public class UI extends Game{
 
 
 
-        //activity buttons
-        panel.add(feedButton);
-        panel.add(treatButton);
+
         panel.add(walkButton);
 
         //pet attributes
@@ -186,11 +210,13 @@ public class UI extends Game{
         panel.add(happinessField);
 
         //save and pause button
-        panel.add(saveButton);
-        panel.add(pauseButton);
+
+
         panel.add(fullnessBar);
         
+        panel.setPreferredSize(new Dimension(600,220));
         frame.add(panel);
+        frame.pack();
         frame.setVisible(true);
     }
 
