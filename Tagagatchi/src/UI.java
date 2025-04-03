@@ -131,7 +131,18 @@ public class UI extends Game{
         };
         napButton.addActionListener(a9);
 
-        JButton saveButton = new JButton("Save");
+        JButton saveButton = new JButton();
+
+        // Save button image
+        try {
+            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("save.png"));
+            Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            saveButton.setIcon(icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         ActionListener a2 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 if (!paused)
@@ -141,12 +152,25 @@ public class UI extends Game{
         saveButton.addActionListener(a2);
 
         JButton pauseButton = new JButton();
+
+        // Default image for the pause button
+        try {
+            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("pause.png"));
+            Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            pauseButton.setIcon(icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         ActionListener a3 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 BufferedImage unscaled;
                 Image img;
-                ImageIcon icon = new ImageIcon(this.getClass().getResource("pause.png"));
+                ImageIcon icon = new ImageIcon();
                 paused = !paused;
+                
+                // Toggle image depending on game state
                     try {
                         if (paused)
                         {
@@ -159,7 +183,6 @@ public class UI extends Game{
                             icon = new ImageIcon(img);
                         }
                     } catch (IOException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 pauseButton.setIcon(icon);
