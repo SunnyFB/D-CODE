@@ -223,7 +223,7 @@ public class UI extends Game{
         weightField.setText("Weight: " + vPet.getWeight());
         happinessField.setText("Happiness: " + vPet.getHappiness());
         hygieneField.setText("Hygiene: " + vPet.getHygiene());
-        energyField.setText("Engery: " + vPet.getEnergy());
+        energyField.setText("Energy: " + vPet.getEnergy());
         
         fullnessBar.setValue((int) (vPet.getFullness() * 10));
     }

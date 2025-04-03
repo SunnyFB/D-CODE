@@ -238,6 +238,7 @@ public class Game extends Main{
             virtualPet.setHappiness(virtualPet.getHappiness()- virtualPet.happinessDrain());
             virtualPet.setEnergy(virtualPet.getEnergy()-virtualPet.energyDrain());
             virtualPet.setHygiene(virtualPet.getHygiene()-virtualPet.hygieneDrain());
+            timer++;
     
             //Is it dead yet
             if (virtualPet.isDead()){

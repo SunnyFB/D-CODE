@@ -67,7 +67,7 @@ public class Pet
      */
     public double hygieneDrain()
     {
-        return 0.02;
+        return 0.2;
     }
 
     /**
@@ -211,7 +211,7 @@ public class Pet
             health++;
             energy++;
             fullness++;
-            setHygiene(hygiene - .5);
+            hygiene -= .5;
         }
         boundValues();
     }
@@ -263,7 +263,7 @@ public class Pet
     public void giveBath()
     {
         hygiene++;
-        energy++;
+        energy += .5;
         boundValues();
     }
 
@@ -372,7 +372,7 @@ public class Pet
      */
     public void setHygiene(double newHygiene)
     {
-        energy = newHygiene;
+        hygiene = newHygiene;
         boundValues();
     }
 
@@ -382,7 +382,7 @@ public class Pet
      */
     private double decimalRound(double num)
     {
-        DecimalFormat df = new DecimalFormat("#.#");
+        DecimalFormat df = new DecimalFormat("#.##");
         return Double.parseDouble(df.format(num));
     }
 }
