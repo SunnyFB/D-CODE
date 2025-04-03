@@ -117,6 +117,7 @@ public class Pet
         if (hygiene < 0) 
         {
             hygiene = 0;
+            health -=.5;
         }
         if (happiness < 0) 
         {
