@@ -161,9 +161,15 @@ public class UI extends Game{
         //BLOB IMAGE
         JLabel blobImage = new JLabel();
         try{
-            BufferedImage blobImageFile = ImageIO.read(this.getClass().getResource("sprites/pet/sleep.png"));
-            Image big = blobImageFile.getSubimage(33, 25, 30, 30);
-            big = big.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+            BufferedImage blobImageFile;
+            if (vPet.isDead()){
+                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
+            }else{
+                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/pet/happy.png"));
+            }
+            
+            Image big = blobImageFile.getSubimage(33, 15, 35, 35);
+            big = big.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
             blobImage = new JLabel(new ImageIcon(big));
         }catch (IOException e){
             e.printStackTrace();
