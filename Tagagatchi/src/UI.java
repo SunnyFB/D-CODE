@@ -3,10 +3,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 
 public class UI extends Game{
@@ -17,13 +20,12 @@ public class UI extends Game{
     JTextField hygieneField;
     JTextField energyField;
     JTextField happinessField;
-    
     JProgressBar fullnessBar;
 
     //variables to update Game
     public boolean feedFood = false;
     public boolean feedTreat = false;
-    public boolean play = false, walk = false, doctor = false, trick = false, bath = false, nap = false;
+    public boolean play = false, walk = false, doctor = false, trick = false, bath = false, nap = false, train = false, treat;
     public boolean save = false, paused = false;
 
     public String petType;
@@ -32,20 +34,155 @@ public class UI extends Game{
         FlatLightLaf.setup();
         // Default Window Nonsense
         frame = new JFrame("Tamagotchi Test");
-        frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        JPanel panel = new JPanel();
-        JPanel buttonPanel = new JPanel();
-        JPanel statPanel = new JPanel();
-        JPanel messagePanel = new JPanel();
-        JPanel imagePanel = new JPanel();
+        //Make main panel
+        JPanel panel = new JPanel(null);
+
+        //BUTTONS
+
+        JButton feedButton = new JButton("Feed Food"); //button to feed pet
+        feedButton.setBounds(0,0,100,20);
+        ActionListener feedButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    feedFood = true;
+            }
+        };
+        feedButton.addActionListener(feedButtonAL);
+        panel.add(feedButton);
+        
+        JButton treatButton = new JButton("Feed Treat"); //button to feed pet
+        treatButton.setBounds(100,0,100,20);
+        ActionListener treatButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    feedFood = true;
+            }
+        };
+        treatButton.addActionListener(treatButtonAL);
+        panel.add(treatButton);
+
+        JButton saveButton = new JButton("Save");
+        saveButton.setBounds(200,200,180,20);
+        ActionListener a2 = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    save = true;
+            }
+        };
+        saveButton.addActionListener(a2);
+        panel.add(saveButton);
+
+        JButton pauseButton = new JButton();
+        pauseButton.setBounds(380,200,20,20);
+        //Set button initially
+        try{
+            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/pause.png"));
+            Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            pauseButton.setIcon(icon);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        ActionListener pauseButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                BufferedImage unscaled;
+                Image img;
+                ImageIcon icon;
+                paused = !paused;
+                    try {
+                        if (paused)
+                        {
+                            unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/start.png"));
+                            img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+                            icon = new ImageIcon(img);
+                        } else {
+                            unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/pause.png"));
+                            img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+                            icon = new ImageIcon(img);
+                        }
+                        pauseButton.setIcon(icon);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+            }
+        };
+        pauseButton.addActionListener(pauseButtonAL);
+        panel.add(pauseButton);
+
+        JButton doctorButton = new JButton("Take to Doctor");
+        ActionListener doctorButtonAL = new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                if (!paused)
+                    doctor = true;
+            }
+        };
+        doctorButton.addActionListener(doctorButtonAL);
+
+        JButton trainButton = new JButton("Teach a Trick");
+        ActionListener trainButtonAL = new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                if (!paused)
+                    train = true;
+            }
+        };
+        trainButton.addActionListener(trainButtonAL);
+
+        JButton bathButton = new JButton("Bath Time");
+        ActionListener bathButtonAL = new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                if (!paused)
+                    train = true;
+            }
+        };
+        bathButton.addActionListener(bathButtonAL);
+
+        JButton napButton = new JButton("Nap Time");
+        ActionListener napButtonAL = new ActionListener(){
+            public void actionPerformed(ActionEvent ae) {
+                if (!paused)
+                    train = true;
+            }
+        };
+        napButton.addActionListener(napButtonAL);
 
 
-        //button panel
-        buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.PAGE_AXIS));
+
+        JButton walkButton = new JButton("Walk");
+        ActionListener walkButtonAL = new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    walk = true;
+            }
+        };
+        walkButton.addActionListener(walkButtonAL);
+
+        //BLOB IMAGE
+        JLabel blobImage = new JLabel();
+        try{
+            BufferedImage blobImageFile;
+            if (vPet.isDead()){
+                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
+            }else{
+                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/pet/happy.png"));
+            }
+            
+            Image big = blobImageFile.getSubimage(33, 15, 35, 35);
+            big = big.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+            blobImage = new JLabel(new ImageIcon(big));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        blobImage.setBounds(200,0,200,200);
+        frame.add(blobImage);
 
 
+
+
+
+
+        //Fullness
         fullnessField = new JTextField("Fullness: " + vPet.getFullness());
         fullnessField.setEditable(false);
         fullnessBar = new JProgressBar(0, 100);
@@ -66,133 +203,9 @@ public class UI extends Game{
         happinessField = new JTextField("Happiness: " + vPet.getHappiness());
         happinessField.setEditable(false);
 
-        JButton feedButton = new JButton("Feed"); //button to feed pet
-        ActionListener a1 = new ActionListener() {
-            public void actionPerformed(ActionEvent ae){
-                if (!paused)
-                    feedFood = true;
-            }
-        };
-        feedButton.addActionListener(a1);
 
-        JButton playButton = new JButton("Play"); //button to play with pet
-        ActionListener a4 = new ActionListener(){
-            public void actionPerformed(ActionEvent ae) {
-                if (!paused)
-                    play = true;
-            }
-        };
-        playButton.addActionListener(a4);
 
-        JButton walkButton = new JButton("Walk");
-        ActionListener a5 = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
-                if (!paused)
-                    walk = true;
-            }
-        };
-        walkButton.addActionListener(a5);
 
-        JButton doctorButton = new JButton("Take to Doctor");
-        ActionListener a6 = new ActionListener(){
-            public void actionPerformed(ActionEvent ae)
-            {
-                if (!paused)
-                    doctor = true;
-            }
-        };
-        doctorButton.addActionListener(a6);
-
-        JButton trainButton = new JButton("Teach a Trick");
-        ActionListener a7 = new ActionListener(){
-            public void actionPerformed(ActionEvent ae)
-            {
-                if (!paused)
-                    trick = true;
-            }
-        };
-        trainButton.addActionListener(a7);
-
-        JButton bathButton = new JButton("Bath Time");
-        ActionListener a8 = new ActionListener() {
-            public void actionPerformed(ActionEvent ae){
-                if (!paused)
-                    bath = true;
-            }
-        };
-        bathButton.addActionListener(a8);
-
-        JButton napButton = new JButton("Nap Time");
-        ActionListener a9 = new ActionListener() {
-            public void actionPerformed(ActionEvent ae){
-                if (!paused)
-                    nap = true;
-            }
-        };
-        napButton.addActionListener(a9);
-
-        JButton saveButton = new JButton();
-
-        // Save button image
-        try {
-            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("save.png"));
-            Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(img);
-            saveButton.setIcon(icon);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ActionListener a2 = new ActionListener() {
-            public void actionPerformed(ActionEvent ae){
-                if (!paused)
-                    save = true;
-            }
-        };
-        saveButton.addActionListener(a2);
-
-        JButton pauseButton = new JButton();
-
-        // Default image for the pause button
-        try {
-            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("pause.png"));
-            Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-            ImageIcon icon = new ImageIcon(img);
-            pauseButton.setIcon(icon);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        ActionListener a3 = new ActionListener() {
-            public void actionPerformed(ActionEvent ae){
-                BufferedImage unscaled;
-                Image img;
-                ImageIcon icon = new ImageIcon();
-                paused = !paused;
-                
-                // Toggle image depending on game state
-                    try {
-                        if (paused)
-                        {
-                            unscaled = ImageIO.read(this.getClass().getResource("start.png"));
-                            img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-                            icon = new ImageIcon(img);
-                        } else {
-                            unscaled = ImageIO.read(this.getClass().getResource("pause.png"));
-                            img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-                            icon = new ImageIcon(img);
-                        }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                pauseButton.setIcon(icon);
-            }
-        };
-        pauseButton.addActionListener(a3);
-
-        //activity buttons
-        panel.add(feedButton);
-        panel.add(playButton);
         panel.add(walkButton);
         panel.add(doctorButton);
         panel.add(trainButton);
@@ -208,11 +221,13 @@ public class UI extends Game{
         panel.add(happinessField);
 
         //save and pause button
-        panel.add(saveButton);
-        panel.add(pauseButton);
-        panel.add(fullnessBar);
-        frame.add(panel);
 
+
+        panel.add(fullnessBar);
+        
+        panel.setPreferredSize(new Dimension(600,220));
+        frame.add(panel);
+        frame.pack();
         frame.setVisible(true);
     }
 
