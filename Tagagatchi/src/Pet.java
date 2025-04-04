@@ -45,7 +45,26 @@ public class Pet
      */
     public String emotion()
     {
-        return "happy";
+        if (fullness <= 5)
+        {
+            return "hungry";
+        } else if (energy < 5)
+        {
+            return "tired";
+        }
+        else if (happiness < 6 && happiness > 3)
+        {
+            return "meh";
+        } else if (happiness <= 3 && happiness > 1)
+        {
+            return "sad";
+        } else if (happiness <= 1)
+        {
+            return "big_sad";
+        } else 
+        {
+            return "happy";
+        }
     }
 
     /**
