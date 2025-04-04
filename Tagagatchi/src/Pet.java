@@ -39,6 +39,15 @@ public class Pet
     }
 
     /**
+     * Determines the emotion of the pet
+     * @return a string to represent the emotional state of the pet
+     */
+    public String emotion()
+    {
+        return "happy";
+    }
+
+    /**
      * @return the drain rate for fullness
      */
     public double fullnessDrain()
