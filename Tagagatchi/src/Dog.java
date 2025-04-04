@@ -17,6 +17,7 @@ public class Dog extends Pet
     public Dog(double fullness,double weight, double happiness,double energy,double health,double hygiene)
     {
         super(fullness,weight,happiness,energy,health,hygiene);
+        petType = "dog";
     }
 
     /**

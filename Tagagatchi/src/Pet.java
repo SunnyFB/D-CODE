@@ -5,6 +5,7 @@ public class Pet
 {
     private double health, weight, happiness, energy,fullness, hygiene;
     private final double maxHealth = 10.0, maxFullness = 10.0, maxHappiness = 10.0, maxWeight = 10.0, maxEnergy = 10.0, maxHygiene = 10.0;
+    protected String petType = "blob";
 
     /**
      * Constructor for Pet
@@ -376,6 +377,14 @@ public class Pet
         boundValues();
     }
 
+
+    /*
+     * Returns the petType as a string
+     */
+    public String getPetType()
+    {
+        return petType;
+    }
     /**
      * returns a rounded decimal and used by the attribute get methods.
      * @param num the number to be rounded to 1 decimal point

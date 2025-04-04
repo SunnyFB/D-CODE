@@ -16,6 +16,7 @@ public class Cat extends Pet{
     public Cat(double fullness,double weight, double happiness,double energy,double health, double hygiene)
     {
         super(fullness,weight,happiness,energy,health,hygiene);
+        petType = "cat";
     }
 
     /**

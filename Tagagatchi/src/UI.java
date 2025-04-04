@@ -36,6 +36,8 @@ public class UI extends Game{
         frame = new JFrame("Tamagotchi Test");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        petType = vPet.getPetType();
+
         //Make main panel
         JPanel panel = new JPanel(null);
 
@@ -63,8 +65,18 @@ public class UI extends Game{
         treatButton.addActionListener(treatButtonAL);
         panel.add(treatButton);
 
-        JButton saveButton = new JButton("Save");
-        saveButton.setBounds(200,200,180,20);
+        JButton saveButton = new JButton();
+        saveButton.setBounds(280,200,20,20);
+
+        //Set button image
+        try {
+            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/icons/save.png"));
+            Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+            ImageIcon icon = new ImageIcon(img);
+            saveButton.setIcon(icon);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ActionListener a2 = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 if (!paused)
@@ -75,10 +87,10 @@ public class UI extends Game{
         panel.add(saveButton);
 
         JButton pauseButton = new JButton();
-        pauseButton.setBounds(380,200,20,20);
+        pauseButton.setBounds(300,200,20,20);
         //Set button initially
         try{
-            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/pause.png"));
+            BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/icons/pause.png"));
             Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
             ImageIcon icon = new ImageIcon(img);
             pauseButton.setIcon(icon);
@@ -94,11 +106,11 @@ public class UI extends Game{
                     try {
                         if (paused)
                         {
-                            unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/start.png"));
+                            unscaled = ImageIO.read(this.getClass().getResource("sprites/icons/start.png"));
                             img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
                             icon = new ImageIcon(img);
                         } else {
-                            unscaled = ImageIO.read(this.getClass().getResource("sprites/pause/pause.png"));
+                            unscaled = ImageIO.read(this.getClass().getResource("sprites/icons/pause.png"));
                             img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
                             icon = new ImageIcon(img);
                         }
@@ -165,7 +177,7 @@ public class UI extends Game{
             if (vPet.isDead()){
                 blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
             }else{
-                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/pet/happy.png"));
+                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + petType + "/happy.png"));
             }
             
             Image big = blobImageFile.getSubimage(33, 15, 35, 35);
