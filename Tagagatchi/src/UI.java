@@ -21,6 +21,7 @@ public class UI extends Game{
     JTextField energyField;
     JTextField happinessField;
     JProgressBar fullnessBar;
+    JLabel blobImage;
 
     //variables to update Game
     public boolean feedFood = false;
@@ -171,7 +172,6 @@ public class UI extends Game{
         walkButton.addActionListener(walkButtonAL);
 
         //BLOB IMAGE
-        JLabel blobImage = new JLabel();
         try{
             BufferedImage blobImageFile;
             if (vPet.isDead()){
@@ -251,8 +251,16 @@ public class UI extends Game{
         happinessField.setText("Happiness: " + vPet.getHappiness());
         hygieneField.setText("Hygiene: " + vPet.getHygiene());
         energyField.setText("Energy: " + vPet.getEnergy());
-        
         fullnessBar.setValue((int) (vPet.getFullness() * 10));
+         if (vPet.isDead()){
+            try{
+                Image blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
+                blobImageFile = blobImageFile.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+                blobImage.setIcon(new ImageIcon(blobImageFile));
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
     }
 
     public String getPetType()
