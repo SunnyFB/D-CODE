@@ -3,6 +3,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
@@ -160,8 +161,9 @@ public class UI extends Game{
         //BLOB IMAGE
         JLabel blobImage = new JLabel();
         try{
-            BufferedImage blobImageFile = ImageIO.read(this.getClass().getResource("sprites/pet/meh.png"));
-            Image big = blobImageFile.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
+            BufferedImage blobImageFile = ImageIO.read(this.getClass().getResource("sprites/pet/sleep.png"));
+            Image big = blobImageFile.getSubimage(33, 25, 30, 30);
+            big = big.getScaledInstance(400, 400, Image.SCALE_DEFAULT);
             blobImage = new JLabel(new ImageIcon(big));
         }catch (IOException e){
             e.printStackTrace();
