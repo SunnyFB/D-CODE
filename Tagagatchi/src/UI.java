@@ -8,6 +8,7 @@ import java.awt.Dimension;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
 import java.awt.Image;
+import java.awt.Panel;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -239,8 +240,22 @@ public class UI extends Game{
         
         panel.setPreferredSize(new Dimension(600,220));
         frame.add(panel);
+        frame.setResizable(false);
         frame.pack();
         frame.setVisible(true);
+    }
+
+    public void openStartUI()
+    {
+        JPanel startPanel = new JPanel();
+        startPanel.setPreferredSize(new Dimension(600,200));
+        JTextArea welcomeMessage = new JTextArea("Welcome to Blobagatchi!\nChoose your new pet below!");
+        welcomeMessage.setBounds(150, 50, 300, 50);
+        startPanel.add(welcomeMessage);
+        JButton blob = new JButton("Blob");
+        // blob.addActionListener(l);
+
+        // while(petType.equals("")); TODO
     }
 
     public void update(Pet vPet){
