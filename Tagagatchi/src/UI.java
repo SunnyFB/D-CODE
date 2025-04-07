@@ -14,13 +14,12 @@ import java.io.IOException;
 
 public class UI extends Game{
     JFrame frame;
-    JTextField fullnessField;
-    JTextField healthField;
-    JTextField weightField;
-    JTextField hygieneField;
-    JTextField energyField;
-    JTextField happinessField;
-    JProgressBar fullnessBar;
+    JProgressBar fullnessField;
+    JProgressBar healthField;
+    JProgressBar weightField;
+    JProgressBar hygieneField;
+    JProgressBar energyField;
+    JProgressBar happinessField;
     JLabel blobImage;
 
     //variables to update Game
@@ -194,26 +193,47 @@ public class UI extends Game{
 
 
 
-        //Fullness
-        fullnessField = new JTextField("Fullness: " + vPet.getFullness());
-        fullnessField.setEditable(false);
-        fullnessBar = new JProgressBar(0, 100);
-        fullnessBar.setValue((int) (vPet.getFullness() * 10));
+        //Bars to show things
+        JTextArea healthText = new JTextArea("Health");
+        healthText.setBounds(400,0,200,20);
+        healthField = new JProgressBar(0, 100);
+        healthField.setValue((int) (vPet.getHealth() * 10));
+        healthField.setBounds(400,20,200,20);
+        frame.add(healthText);
+        frame.add(healthField);
 
-        healthField = new JTextField("Health: " + vPet.getFullness());
-        healthField.setEditable(false);
+        JTextArea fullnessText = new JTextArea("Fullness");
+        fullnessText.setBounds(400,40,200,20);
+        fullnessField = new JProgressBar(0, 100);
+        fullnessField.setValue((int) (vPet.getFullness() * 10));
+        fullnessField.setBounds(400,60,200,20);
+        frame.add(fullnessText);
+        frame.add(fullnessField);
 
-        weightField = new JTextField("Health: " + vPet.getFullness());
-        weightField.setEditable(false);
+        JTextArea energyText = new JTextArea("Energy");
+        energyText.setBounds(400,80,200,20);
+        energyField = new JProgressBar(0, 100);
+        energyField.setValue((int) (vPet.getFullness() * 10));
+        energyField.setBounds(400,100,200,20);
+        frame.add(energyText);
+        frame.add(energyField);
 
-        hygieneField = new JTextField("Hygiene: " + vPet.getHygiene());
-        hygieneField.setEditable(false);
+        JTextArea happinessText = new JTextArea("Happiness");
+        happinessText.setBounds(400,120,200,20);
+        happinessField = new JProgressBar(0, 100);
+        happinessField.setValue((int) (vPet.getFullness() * 10));
+        happinessField.setBounds(400,140,200,20);
+        frame.add(happinessText);
+        frame.add(happinessField);
 
-        energyField = new JTextField("Energy: " + vPet.getEnergy());
-        energyField.setEditable(false);
+        JTextArea hygieneText = new JTextArea("Hygiene");
+        hygieneText.setBounds(400,120,200,20);
+        hygieneField = new JProgressBar(0, 100);
+        hygieneField.setValue((int) (vPet.getFullness() * 10));
+        hygieneField.setBounds(400,140,200,20);
+        frame.add(hygieneText);
+        frame.add(hygieneField);
 
-        happinessField = new JTextField("Happiness: " + vPet.getHappiness());
-        happinessField.setEditable(false);
 
 
 
@@ -227,15 +247,12 @@ public class UI extends Game{
         //pet attributes
         panel.add(fullnessField);
         panel.add(healthField);
-        panel.add(weightField);
+        //panel.add(weightField);
         panel.add(hygieneField);
         panel.add(energyField);
         panel.add(happinessField);
 
         //save and pause button
-
-
-        panel.add(fullnessBar);
         
         panel.setPreferredSize(new Dimension(600,220));
         frame.add(panel);
@@ -245,13 +262,12 @@ public class UI extends Game{
 
     public void update(Pet vPet){
         //Update the UI
-        fullnessField.setText("Fullness: " + vPet.getFullness());
-        healthField.setText("Health: " + vPet.getHealth());
-        weightField.setText("Weight: " + vPet.getWeight());
-        happinessField.setText("Happiness: " + vPet.getHappiness());
-        hygieneField.setText("Hygiene: " + vPet.getHygiene());
-        energyField.setText("Energy: " + vPet.getEnergy());
-        fullnessBar.setValue((int) (vPet.getFullness() * 10));
+        fullnessField.setValue((int) (vPet.getFullness()*10));
+        healthField.setValue((int) (vPet.getHealth()));
+        weightField.setValue((int) (vPet.getWeight()));
+        happinessField.setValue((int) (vPet.getHappiness()));
+        hygieneField.setValue((int) (vPet.getHygiene()));
+        energyField.setValue((int) (vPet.getEnergy()));
          if (vPet.isDead()){
             try{
                 Image blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
