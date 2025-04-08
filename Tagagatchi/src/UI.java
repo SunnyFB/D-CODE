@@ -30,7 +30,7 @@ public class UI extends Game{
     public void openGameUI(Pet vPet){
         FlatLightLaf.setup();
         // Default Window Nonsense
-        frame = new JFrame("Tamagotchi Test");
+        frame = new JFrame("Blobagatchi");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         petType = vPet.getPetType();
