@@ -278,11 +278,11 @@ public class UI extends Game{
     public void update(Pet vPet){
         //Update the UI
         fullnessField.setValue((int) (vPet.getFullness()*10));
-        healthField.setValue((int) (vPet.getHealth()));
-        weightField.setValue((int) (vPet.getWeight()));
-        happinessField.setValue((int) (vPet.getHappiness()));
-        hygieneField.setValue((int) (vPet.getHygiene()));
-        energyField.setValue((int) (vPet.getEnergy()));
+        healthField.setValue((int) (vPet.getHealth()*10));
+        weightField.setValue((int) (vPet.getWeight()*10));
+        happinessField.setValue((int) (vPet.getHappiness()*10));
+        hygieneField.setValue((int) (vPet.getHygiene()*10));
+        energyField.setValue((int) (vPet.getEnergy()*10));
          if (vPet.isDead()){
             try{
                 Image blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
