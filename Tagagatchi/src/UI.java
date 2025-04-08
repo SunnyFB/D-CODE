@@ -192,15 +192,17 @@ public class UI extends Game{
 
         //Bars to show things
         JTextArea healthText = new JTextArea("Health");
-        healthText.setBounds(400,0,200,20);
+        healthText.setBounds(0,160,200,20);
+        healthText.setEditable(false);
         healthField = new JProgressBar(0, 100);
         healthField.setValue((int) (vPet.getHealth() * 10));
-        healthField.setBounds(400,20,200,20);
+        healthField.setBounds(0,180,200,20);
         frame.add(healthText);
         frame.add(healthField);
 
         JTextArea fullnessText = new JTextArea("Fullness");
         fullnessText.setBounds(400,40,200,20);
+        fullnessText.setEditable(false);
         fullnessField = new JProgressBar(0, 100);
         fullnessField.setValue((int) (vPet.getFullness() * 10));
         fullnessField.setBounds(400,60,200,20);
@@ -209,6 +211,7 @@ public class UI extends Game{
 
         JTextArea energyText = new JTextArea("Energy");
         energyText.setBounds(400,80,200,20);
+        energyText.setEditable(false);
         energyField = new JProgressBar(0, 100);
         energyField.setValue((int) (vPet.getEnergy() * 10));
         energyField.setBounds(400,100,200,20);
@@ -217,6 +220,7 @@ public class UI extends Game{
 
         JTextArea happinessText = new JTextArea("Happiness");
         happinessText.setBounds(400,120,200,20);
+        happinessText.setEditable(false);
         happinessField = new JProgressBar(0, 100);
         happinessField.setValue((int) (vPet.getHappiness() * 10));
         happinessField.setBounds(400,140,200,20);
@@ -225,6 +229,7 @@ public class UI extends Game{
 
         JTextArea hygieneText = new JTextArea("Hygiene");
         hygieneText.setBounds(400,160,200,20);
+        hygieneText.setEditable(false);
         hygieneField = new JProgressBar(0, 100);
         hygieneField.setValue((int) (vPet.getHygiene() * 10));
         hygieneField.setBounds(400,180,200,20);
@@ -233,9 +238,10 @@ public class UI extends Game{
 
         JTextArea weightText = new JTextArea("Weight");
         weightText.setBounds(0, 120, 200, 20);
+        weightText.setEditable(false);
         weightField = new JProgressBar(0, 100);
         weightField.setValue((int) (vPet.getWeight() * 10));
-        weightField.setBounds(0, 120, 200, 20);
+        weightField.setBounds(0, 140, 200, 20);
         frame.add(weightText);
         frame.add(weightField);
 
