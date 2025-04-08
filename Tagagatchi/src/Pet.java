@@ -96,7 +96,7 @@ public class Pet
      */
     public double hygieneDrain()
     {
-        return 0.2;
+        return 0.02;
     }
 
     /**

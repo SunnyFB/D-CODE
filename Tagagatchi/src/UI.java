@@ -2,15 +2,11 @@ package Tagagatchi.src;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
 import java.awt.Image;
-import java.awt.Panel;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
 public class UI extends Game{
@@ -177,7 +173,7 @@ public class UI extends Game{
             if (vPet.isDead()){
                 blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
             }else{
-                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + petType + "/happy.png"));
+                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + vPet.getPetType() + "/happy.png"));
             }
             
             Image big = blobImageFile.getSubimage(33, 15, 35, 35);
@@ -214,7 +210,7 @@ public class UI extends Game{
         JTextArea energyText = new JTextArea("Energy");
         energyText.setBounds(400,80,200,20);
         energyField = new JProgressBar(0, 100);
-        energyField.setValue((int) (vPet.getFullness() * 10));
+        energyField.setValue((int) (vPet.getEnergy() * 10));
         energyField.setBounds(400,100,200,20);
         frame.add(energyText);
         frame.add(energyField);
@@ -222,18 +218,26 @@ public class UI extends Game{
         JTextArea happinessText = new JTextArea("Happiness");
         happinessText.setBounds(400,120,200,20);
         happinessField = new JProgressBar(0, 100);
-        happinessField.setValue((int) (vPet.getFullness() * 10));
+        happinessField.setValue((int) (vPet.getHappiness() * 10));
         happinessField.setBounds(400,140,200,20);
         frame.add(happinessText);
         frame.add(happinessField);
 
         JTextArea hygieneText = new JTextArea("Hygiene");
-        hygieneText.setBounds(400,120,200,20);
+        hygieneText.setBounds(400,160,200,20);
         hygieneField = new JProgressBar(0, 100);
-        hygieneField.setValue((int) (vPet.getFullness() * 10));
-        hygieneField.setBounds(400,140,200,20);
+        hygieneField.setValue((int) (vPet.getHygiene() * 10));
+        hygieneField.setBounds(400,180,200,20);
         frame.add(hygieneText);
         frame.add(hygieneField);
+
+        JTextArea weightText = new JTextArea("Weight");
+        weightText.setBounds(0, 120, 200, 20);
+        weightField = new JProgressBar(0, 100);
+        weightField.setValue((int) (vPet.getWeight() * 10));
+        weightField.setBounds(0, 120, 200, 20);
+        frame.add(weightText);
+        frame.add(weightField);
 
 
 
@@ -248,7 +252,7 @@ public class UI extends Game{
         //pet attributes
         panel.add(fullnessField);
         panel.add(healthField);
-        //panel.add(weightField);
+        panel.add(weightField);
         panel.add(hygieneField);
         panel.add(energyField);
         panel.add(happinessField);
@@ -270,19 +274,26 @@ public class UI extends Game{
         welcomeMessage.setBounds(150, 50, 300, 50);
         startPanel.add(welcomeMessage);
         JButton blob = new JButton("Blob");
-        // blob.addActionListener(l);
+        ActionListener blobAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                petType = "blob";
+            }
+        };
+        blob.addActionListener(blobAL);
+        blob.setBounds(100, 100, 50, 10);
 
-        // while(petType.equals("")); TODO
+        // while(petType.equals(" ")); TODO
     }
 
     public void update(Pet vPet){
         //Update the UI
         fullnessField.setValue((int) (vPet.getFullness()*10));
-        healthField.setValue((int) (vPet.getHealth()));
-        weightField.setValue((int) (vPet.getWeight()));
-        happinessField.setValue((int) (vPet.getHappiness()));
-        hygieneField.setValue((int) (vPet.getHygiene()));
-        energyField.setValue((int) (vPet.getEnergy()));
+        healthField.setValue((int) (vPet.getHealth() * 10));
+        weightField.setValue((int) (vPet.getWeight() * 10));
+        happinessField.setValue((int) (vPet.getHappiness() * 10));
+        hygieneField.setValue((int) (vPet.getHygiene() * 10));
+        energyField.setValue((int) (vPet.getEnergy() * 10 ));
          if (vPet.isDead()){
             try{
                 Image blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));

@@ -46,7 +46,6 @@ public class Game extends Main{
                 writer.write("\n10");
                 writer.write("\n0");
                 writer.write("\n0");
-                ui.openStartUI();
                 writer.write("\n" + petType);
         
                 virtualPet = switch (petType) {
