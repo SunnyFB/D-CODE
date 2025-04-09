@@ -27,7 +27,7 @@ public class UI extends Game{
     public boolean play = false, walk = false, doctor = false, trick = false, bath = false, nap = false, train = false, treat;
     public boolean save = false, paused = false;
 
-    public String petType;
+    public String petType = "";
 
     public void openGameUI(Pet vPet){
         FlatLightLaf.setup();
@@ -348,12 +348,8 @@ public class UI extends Game{
         }catch (IOException e){
             e.printStackTrace();
         }
-        blobImage.setBorder(BorderFactory.createLineBorder(Color.black));
         blobImage.setBounds(50,0,500,100);
         startPanel.add(blobImage);
-       
-       
-        // while(petType.equals(" ")); TODO
 
         frame.add(startPanel);
         frame.setResizable(false);
