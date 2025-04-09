@@ -18,6 +18,8 @@ public class Game extends Main{
     UI ui;
     boolean isDead = false;
     int timer = 0;
+    Timer gameTimer = new Timer();
+    Timer uiTimer = new Timer();
 
     private final String saveName = "petgamedata.txt";
 
@@ -184,7 +186,6 @@ public class Game extends Main{
 
     private void gameLoop() {
         //Game timer
-        Timer gameTimer = new Timer();
         int gameBegin = 0;
         int gameTimeInterval = 1000;
 
@@ -198,7 +199,6 @@ public class Game extends Main{
         }, gameBegin, gameTimeInterval);
         
         //UI timer
-        Timer uiTimer = new Timer();
         int uiBegin = 0;
         int uiTimeInterval = 10;
         
@@ -269,6 +269,11 @@ public class Game extends Main{
 
             virtualPet.isHungry();
             virtualPet.healthyPet();
+        }else{
+            //is ded
+            gameTimer.cancel();
+            uiTimer.cancel();
+            ui.update(virtualPet,timer);
         }
     }
 }
