@@ -236,8 +236,8 @@ public class Game extends Main{
         if (ui.doctor) virtualPet.toDoctor();
         ui.doctor = false;
 
-        if (ui.trick) virtualPet.train();
-        ui.trick = false;
+        if (ui.train) virtualPet.train();
+        ui.train = false;
 
         if (ui.bath) virtualPet.giveBath();
         ui.bath = false;
