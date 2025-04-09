@@ -40,6 +40,15 @@ public class Pet
     }
 
     /**
+     * Determines if the pet is health. If pet is healthy, it will increase health.
+     */
+    public void healthyPet()
+    {
+        if (fullness >= 8) health++;
+        else if (hygiene >= 9) health++;
+    }
+
+    /**
      * Determines the emotion of the pet
      * @return a string to represent the emotional state of the pet
      */

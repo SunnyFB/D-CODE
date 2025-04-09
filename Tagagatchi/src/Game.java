@@ -248,6 +248,7 @@ public class Game extends Main{
             }
 
             virtualPet.isHungry();
+            virtualPet.healthyPet();
         }
     }
 }
