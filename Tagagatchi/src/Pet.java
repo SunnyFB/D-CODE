@@ -301,6 +301,7 @@ public class Pet
     {
         hygiene++;
         energy += .5;
+        happiness-=1;
         boundValues();
     }
 

@@ -97,7 +97,7 @@ public class UI extends Game{
         bathButton.addActionListener(bathButtonAL);
         panel.add(bathButton);
 
-        JButton napButton = new JButton("Take a Nap"); //Bath button
+        JButton napButton = new JButton("Take a Nap"); //Nap button
         napButton.setBounds(0,80,200,20);
         ActionListener napButtonAL = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
@@ -108,7 +108,7 @@ public class UI extends Game{
         napButton.addActionListener(napButtonAL);
         panel.add(napButton);
 
-        JButton walkButton = new JButton("Take a Walk"); //Bath button
+        JButton walkButton = new JButton("Take a Walk"); //Walk button
         walkButton.setBounds(0,100,200,20);
         ActionListener walkButtonAL = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
@@ -118,6 +118,17 @@ public class UI extends Game{
         };
         walkButton.addActionListener(walkButtonAL);
         panel.add(walkButton);
+
+        JButton playButton = new JButton("Play with blob"); //Play button
+        playButton.setBounds(0,120,200,20);
+        ActionListener playButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    play = true;
+            }
+        };
+        playButton.addActionListener(playButtonAL);
+        panel.add(playButton);
 
 
 
