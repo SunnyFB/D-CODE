@@ -45,7 +45,7 @@ public class Pet
      */
     public String emotion()
     {
-        if (fullness <= 5)
+        if (fullness <= 4)
         {
             return "hungry";
         } else if (energy < 5)
@@ -125,13 +125,12 @@ public class Pet
         if (fullness > maxFullness)
         {
             fullness = maxFullness;
-            weight++; //pet gets fatter if it gets fed too much
-            health -= 2;
+            weight += .5; //pet gets fatter if it gets fed too much
         }
         if (weight > maxWeight)
         {
             weight = maxWeight;
-            health--;
+            health -= .5; //pet gets unhealthy if it is overweight
         }
         if (health > maxHealth)
         {
@@ -146,7 +145,7 @@ public class Pet
         if (hygiene < 0) 
         {
             hygiene = 0;
-            health -=.5;
+            health -=.5; //pet gets unhealthy if it is too dirty
         }
         if (happiness < 0) 
         {
