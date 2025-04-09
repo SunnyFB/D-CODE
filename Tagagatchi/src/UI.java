@@ -173,7 +173,7 @@ public class UI extends Game{
             if (vPet.isDead()){
                 blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
             }else{
-                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + vPet.getPetType() + "/happy.png"));
+                blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + vPet.getPetType() + "/"+ vPet.emotion() +".png"));
             }
             
             Image big = blobImageFile.getSubimage(33, 15, 35, 35);
@@ -303,6 +303,16 @@ public class UI extends Game{
                 e.printStackTrace();
             }
         }
+        BufferedImage blobImageFile;
+        try {
+            blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + vPet.getPetType() + "/"+ vPet.emotion() +".png"));
+            Image big = blobImageFile.getSubimage(33, 15, 35, 35);
+            big = big.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+            blobImage = new JLabel(new ImageIcon(big));
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        
     }
 
     public String getPetType()
