@@ -5,6 +5,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -37,31 +38,49 @@ public class Game extends Main{
 
             // New Save File
             if (saveFile.createNewFile()) {
-        
-                BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
-                writer.write("5");//fullness
-                writer.write("\n5"); //weight
-                writer.write("\n10"); //happiness
-                writer.write("\n10"); //Energy
-                writer.write("\n10"); //HEealth
-                writer.write("\n0"); //Hygene
-                writer.write("\n0"); //Timer
-                writer.write("\n" + petType); //Pet type
-        
-                virtualPet = switch (petType) {
-                    case "cat" -> new Cat();
-                    case "dog" -> new Dog();
-                    case "alien" -> new Alien();
-                    default -> new Pet();
-                };
-        
-                writer.flush();
-                writer.close();
-        
-                System.out.println("New save file was created!");
-        
-                // Loaded Save File
-                start();
+                ui.openStartUI();
+                Timer Timer = new Timer();
+                int Begin = 0;
+                int TimeInterval = 50;
+                
+                Timer.scheduleAtFixedRate(new TimerTask() {
+                    @Override
+                    public void run() {
+                        if(ui.petType != ""){
+                            try{
+                                BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
+                                writer.write("5");//fullness
+                                writer.write("\n5"); //weight
+                                writer.write("\n10"); //happiness
+                                writer.write("\n10"); //Energy
+                                writer.write("\n10"); //HEealth
+                                writer.write("\n0"); //Hygene
+                                writer.write("\n0"); //Timer
+                                writer.write("\n" + ui.petType); //Pet type
+                        
+                                virtualPet = switch (ui.petType) {
+                                    case "cat" -> new Cat();
+                                    case "dog" -> new Dog();
+                                    case "alien" -> new Alien();
+                                    default -> new Pet();
+                                };
+                        
+                                writer.flush();
+                                writer.close();
+                        
+                                System.out.println("New save file was created!");
+                        
+                                // Loaded Save File
+                                Timer.cancel();
+                                start();
+                            }catch (IOException e){
+                                e.printStackTrace();
+                            }
+                        }
+                            
+                    }
+                }, Begin, TimeInterval);
+
             } else {
                         
                 String[] vars = new String[8];
