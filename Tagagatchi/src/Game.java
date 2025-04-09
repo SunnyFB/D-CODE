@@ -49,12 +49,12 @@ public class Game extends Main{
                         if(ui.petType != ""){
                             try{
                                 BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
-                                writer.write("5");//fullness
-                                writer.write("\n5"); //weight
-                                writer.write("\n10"); //happiness
-                                writer.write("\n10"); //Energy
-                                writer.write("\n10"); //HEealth
-                                writer.write("\n0"); //Hygene
+                                writer.write("7.5");//fullness
+                                writer.write("\n7.5"); //weight
+                                writer.write("\n7.5"); //happiness
+                                writer.write("\n7.5"); //Energy
+                                writer.write("\n7.5"); //HEealth
+                                writer.write("\n7.5"); //Hygene
                                 writer.write("\n0"); //Timer
                                 writer.write("\n" + ui.petType); //Pet type
                         
