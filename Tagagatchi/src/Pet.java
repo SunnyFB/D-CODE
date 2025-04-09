@@ -231,12 +231,12 @@ public class Pet
     {
         if (isTreat) //feeds pet a treat
         {
-            weight += 2;
+            weight += .1;
             fullness += 0.5;
 
         } else //feeds pet a meal
         {
-            weight++;
+            weight+=.2;
             health++;
             energy++;
             fullness++;

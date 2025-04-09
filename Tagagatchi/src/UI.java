@@ -194,29 +194,38 @@ public class UI extends Game{
 
         //Bars to show things
         JTextArea healthText = new JTextArea("Health");
-        healthText.setBounds(0,160,200,20);
+        healthText.setBounds(400,0,200,20);
         healthText.setEditable(false);
         healthField = new JProgressBar(0, 100);
         healthField.setValue((int) (vPet.getHealth() * 10));
-        healthField.setBounds(0,180,200,20);
+        healthField.setBounds(400,20,200,10);
         frame.add(healthText);
         frame.add(healthField);
 
         JTextArea fullnessText = new JTextArea("Fullness");
-        fullnessText.setBounds(400,40,200,20);
+        fullnessText.setBounds(400,30,200,20);
         fullnessText.setEditable(false);
         fullnessField = new JProgressBar(0, 100);
         fullnessField.setValue((int) (vPet.getFullness() * 10));
-        fullnessField.setBounds(400,60,200,20);
+        fullnessField.setBounds(400,50,200,10);
         frame.add(fullnessText);
         frame.add(fullnessField);
 
+        JTextArea weightText = new JTextArea("Weight");
+        weightText.setBounds(400, 60, 200, 20);
+        weightText.setEditable(false);
+        weightField = new JProgressBar(0, 100);
+        weightField.setValue((int) (vPet.getWeight() * 10));
+        weightField.setBounds(400, 80, 200, 10);
+        frame.add(weightText);
+        frame.add(weightField);
+
         JTextArea energyText = new JTextArea("Energy");
-        energyText.setBounds(400,80,200,20);
+        energyText.setBounds(400,90,200,20);
         energyText.setEditable(false);
         energyField = new JProgressBar(0, 100);
         energyField.setValue((int) (vPet.getEnergy() * 10));
-        energyField.setBounds(400,100,200,20);
+        energyField.setBounds(400,110,200,10);
         frame.add(energyText);
         frame.add(energyField);
 
@@ -225,27 +234,18 @@ public class UI extends Game{
         happinessText.setEditable(false);
         happinessField = new JProgressBar(0, 100);
         happinessField.setValue((int) (vPet.getHappiness() * 10));
-        happinessField.setBounds(400,140,200,20);
+        happinessField.setBounds(400,140,200,10);
         frame.add(happinessText);
         frame.add(happinessField);
 
         JTextArea hygieneText = new JTextArea("Hygiene");
-        hygieneText.setBounds(400,160,200,20);
+        hygieneText.setBounds(400,150,200,20);
         hygieneText.setEditable(false);
         hygieneField = new JProgressBar(0, 100);
         hygieneField.setValue((int) (vPet.getHygiene() * 10));
-        hygieneField.setBounds(400,180,200,20);
+        hygieneField.setBounds(400,170,200,10);
         frame.add(hygieneText);
         frame.add(hygieneField);
-
-        JTextArea weightText = new JTextArea("Weight");
-        weightText.setBounds(0, 120, 200, 20);
-        weightText.setEditable(false);
-        weightField = new JProgressBar(0, 100);
-        weightField.setValue((int) (vPet.getWeight() * 10));
-        weightField.setBounds(0, 140, 200, 20);
-        frame.add(weightText);
-        frame.add(weightField);
 
 
 
@@ -364,7 +364,8 @@ public class UI extends Game{
         happinessField.setValue((int) (vPet.getHappiness() * 10));
         hygieneField.setValue((int) (vPet.getHygiene() * 10));
         energyField.setValue((int) (vPet.getEnergy() * 10 ));
-         if (vPet.isDead()){
+        
+        if (vPet.isDead()){
             try{
                 Image blobImageFile = ImageIO.read(this.getClass().getResource("sprites/dead.png"));
                 blobImageFile = blobImageFile.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
@@ -372,15 +373,15 @@ public class UI extends Game{
             }catch(IOException e){
                 e.printStackTrace();
             }
-        }
-        BufferedImage blobImageFile;
-        try {
-            blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + vPet.getPetType() + "/"+ vPet.emotion() +".png"));
-            Image big = blobImageFile.getSubimage(33, 15, 35, 35);
-            big = big.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
-            blobImage = new JLabel(new ImageIcon(big));
-        }catch(IOException e){
-            e.printStackTrace();
+        }else{
+            try {
+                BufferedImage blobImageFile = ImageIO.read(this.getClass().getResource("sprites/" + vPet.getPetType() + "/"+ vPet.emotion() +".png"));
+                Image big = blobImageFile.getSubimage(33, 15, 35, 35);
+                big = big.getScaledInstance(200, 200, Image.SCALE_DEFAULT);
+                blobImage.setIcon(new ImageIcon(big));
+            }catch(IOException e){
+               e.printStackTrace();
+            }
         }
         
     }
