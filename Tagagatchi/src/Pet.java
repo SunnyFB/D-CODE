@@ -60,6 +60,15 @@ public class Pet
         } else if (energy < 5)
         {
             return "tired";
+        } else if (energy < 4)
+        {
+            return "yawn";
+        } else if (health < 4)
+        {
+            return "cringe";
+        } else if (hygiene < 5)
+        {
+            return "smelly";
         }
         else if (happiness < 6 && happiness > 3)
         {
