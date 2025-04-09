@@ -24,7 +24,7 @@ public class UI extends Game{
     //variables to update Game
     public boolean feedFood = false;
     public boolean feedTreat = false;
-    public boolean play = false, walk = false, doctor = false, trick = false, bath = false, nap = false, train = false, treat;
+    public boolean play = false, walk = false, doctor = false, bath = false, nap = false, train = false, treat;
     public boolean save = false, paused = false;
 
     public String petType = "";
@@ -133,7 +133,7 @@ public class UI extends Game{
 
 
         JButton saveButton = new JButton();
-        saveButton.setBounds(280,200,20,20);
+        saveButton.setBounds(0,180,20,20);
 
         //Set button image
         try {
@@ -154,7 +154,7 @@ public class UI extends Game{
         panel.add(saveButton);
 
         JButton pauseButton = new JButton();
-        pauseButton.setBounds(300,200,20,20);
+        pauseButton.setBounds(20,180,20,20);
         //Set button initially
         try{
             BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/icons/pause.png"));
@@ -272,7 +272,7 @@ public class UI extends Game{
 
         //save and pause button
         
-        panel.setPreferredSize(new Dimension(600,220));
+        panel.setPreferredSize(new Dimension(600,200));
         frame.add(panel);
         frame.setResizable(false);
         frame.pack();
