@@ -210,11 +210,6 @@ public class UI extends Game{
         blobImage.setBounds(150,0,200,200);
         frame.add(blobImage);
 
-
-
-
-
-
         //Bars to show things
         JTextArea healthText = new JTextArea("Health");
         healthText.setBounds(400,0,200,20);
@@ -279,6 +274,10 @@ public class UI extends Game{
         frame.setVisible(true);
     }
 
+    /**
+     * The opening title screen of the game. If there is no game file, the game will use this method.
+     * This is where is player can choose their type of pet.
+     */
     public void openStartUI()
     {
         FlatLightLaf.setup();
@@ -357,6 +356,10 @@ public class UI extends Game{
         frame.setVisible(true);
     }
 
+    /**
+     * This method is used to update the information on the UI.
+     * @param vPet the Pet that is being cared for in the game.
+     */
     public void update(Pet vPet){
         //Update the UI
         fullnessField.setValue((int) (vPet.getFullness()*10));
@@ -387,6 +390,9 @@ public class UI extends Game{
         
     }
 
+    /**
+     * @return the pet type of the current pet
+     */
     public String getPetType()
     {
         return petType;
