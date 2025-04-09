@@ -207,7 +207,7 @@ public class UI extends Game{
         }catch (IOException e){
             e.printStackTrace();
         }
-        blobImage.setBounds(200,0,200,200);
+        blobImage.setBounds(150,0,200,200);
         frame.add(blobImage);
 
 
