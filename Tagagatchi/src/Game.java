@@ -39,14 +39,14 @@ public class Game extends Main{
             if (saveFile.createNewFile()) {
         
                 BufferedWriter writer = new BufferedWriter(new FileWriter(saveName));
-                writer.write("5");
-                writer.write("\n10");
-                writer.write("\n10");
-                writer.write("\n10");
-                writer.write("\n10");
-                writer.write("\n0");
-                writer.write("\n0");
-                writer.write("\n" + petType);
+                writer.write("5");//fullness
+                writer.write("\n5"); //weight
+                writer.write("\n10"); //happiness
+                writer.write("\n10"); //Energy
+                writer.write("\n10"); //HEealth
+                writer.write("\n0"); //Hygene
+                writer.write("\n0"); //Timer
+                writer.write("\n" + petType); //Pet type
         
                 virtualPet = switch (petType) {
                     case "cat" -> new Cat();

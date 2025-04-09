@@ -42,7 +42,7 @@ public class UI extends Game{
 
         //BUTTONS
 
-        JButton feedButton = new JButton("Feed Food"); //button to feed pet
+        JButton feedButton = new JButton("Feed Food"); //Food button
         feedButton.setBounds(0,0,100,20);
         ActionListener feedButtonAL = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
@@ -53,16 +53,73 @@ public class UI extends Game{
         feedButton.addActionListener(feedButtonAL);
         panel.add(feedButton);
         
-        JButton treatButton = new JButton("Feed Treat"); //button to feed pet
+        JButton treatButton = new JButton("Feed Treat"); //Treat button
         treatButton.setBounds(100,0,100,20);
         ActionListener treatButtonAL = new ActionListener() {
             public void actionPerformed(ActionEvent ae){
                 if (!paused)
-                    feedFood = true;
+                    feedTreat = true;
             }
         };
         treatButton.addActionListener(treatButtonAL);
         panel.add(treatButton);
+
+        JButton doctorButton = new JButton("Take to Doctor"); //Doctor button
+        doctorButton.setBounds(0,20,200,20);
+        ActionListener doctorButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    doctor = true;
+            }
+        };
+        doctorButton.addActionListener(doctorButtonAL);
+        panel.add(doctorButton);
+
+        JButton trainButton = new JButton("Teach a Trick"); //Trick button
+        trainButton.setBounds(0,40,200,20);
+        ActionListener trainButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    train = true;
+            }
+        };
+        trainButton.addActionListener(trainButtonAL);
+        panel.add(trainButton);
+
+        JButton bathButton = new JButton("Take a Bath"); //Bath button
+        bathButton.setBounds(0,60,200,20);
+        ActionListener bathButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    bath = true;
+            }
+        };
+        bathButton.addActionListener(bathButtonAL);
+        panel.add(bathButton);
+
+        JButton napButton = new JButton("Take a Nap"); //Bath button
+        napButton.setBounds(0,80,200,20);
+        ActionListener napButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    nap = true;
+            }
+        };
+        napButton.addActionListener(napButtonAL);
+        panel.add(napButton);
+
+        JButton walkButton = new JButton("Take a Walk"); //Bath button
+        walkButton.setBounds(0,100,200,20);
+        ActionListener walkButtonAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                if (!paused)
+                    walk = true;
+            }
+        };
+        walkButton.addActionListener(walkButtonAL);
+        panel.add(walkButton);
+
+
 
         JButton saveButton = new JButton();
         saveButton.setBounds(280,200,20,20);
@@ -122,52 +179,7 @@ public class UI extends Game{
         pauseButton.addActionListener(pauseButtonAL);
         panel.add(pauseButton);
 
-        JButton doctorButton = new JButton("Take to Doctor");
-        ActionListener doctorButtonAL = new ActionListener(){
-            public void actionPerformed(ActionEvent ae) {
-                if (!paused)
-                    doctor = true;
-            }
-        };
-        doctorButton.addActionListener(doctorButtonAL);
 
-        JButton trainButton = new JButton("Teach a Trick");
-        ActionListener trainButtonAL = new ActionListener(){
-            public void actionPerformed(ActionEvent ae) {
-                if (!paused)
-                    train = true;
-            }
-        };
-        trainButton.addActionListener(trainButtonAL);
-
-        JButton bathButton = new JButton("Bath Time");
-        ActionListener bathButtonAL = new ActionListener(){
-            public void actionPerformed(ActionEvent ae) {
-                if (!paused)
-                    train = true;
-            }
-        };
-        bathButton.addActionListener(bathButtonAL);
-
-        JButton napButton = new JButton("Nap Time");
-        ActionListener napButtonAL = new ActionListener(){
-            public void actionPerformed(ActionEvent ae) {
-                if (!paused)
-                    train = true;
-            }
-        };
-        napButton.addActionListener(napButtonAL);
-
-
-
-        JButton walkButton = new JButton("Walk");
-        ActionListener walkButtonAL = new ActionListener(){
-            public void actionPerformed(ActionEvent ae){
-                if (!paused)
-                    walk = true;
-            }
-        };
-        walkButton.addActionListener(walkButtonAL);
 
         //BLOB IMAGE
         try{
@@ -246,24 +258,6 @@ public class UI extends Game{
         hygieneField.setBounds(400,170,200,10);
         frame.add(hygieneText);
         frame.add(hygieneField);
-
-
-
-
-
-        panel.add(walkButton);
-        panel.add(doctorButton);
-        panel.add(trainButton);
-        panel.add(bathButton);
-        panel.add(napButton);
-
-        //pet attributes
-        panel.add(fullnessField);
-        panel.add(healthField);
-        panel.add(weightField);
-        panel.add(hygieneField);
-        panel.add(energyField);
-        panel.add(happinessField);
 
         //save and pause button
         
