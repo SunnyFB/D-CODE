@@ -187,6 +187,7 @@ public class Game extends Main{
         Timer gameTimer = new Timer();
         int gameBegin = 0;
         int gameTimeInterval = 1000;
+
         
         gameTimer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -245,7 +246,7 @@ public class Game extends Main{
         if (ui.nap) virtualPet.sleep();
         ui.nap = false;
 
-        ui.update(virtualPet);
+        ui.update(virtualPet,timer);
     }
 
     /**

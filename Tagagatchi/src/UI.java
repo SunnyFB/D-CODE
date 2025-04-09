@@ -362,7 +362,7 @@ public class UI extends Game{
         frame.setVisible(true);
     }
 
-    public void update(Pet vPet,String timerTime){
+    public void update(Pet vPet,Integer timer){
         //Update the UI
         fullnessField.setValue((int) (vPet.getFullness()*10));
         healthField.setValue((int) (vPet.getHealth() * 10));
@@ -370,7 +370,7 @@ public class UI extends Game{
         happinessField.setValue((int) (vPet.getHappiness() * 10));
         hygieneField.setValue((int) (vPet.getHygiene() * 10));
         energyField.setValue((int) (vPet.getEnergy() * 10 ));
-        timeLasted = new JLabel("Time Lasted: "+timerTime+"s");
+        timeLasted.setText("Time Lasted: "+timer+"s");
         
         if (vPet.isDead()){
             try{
