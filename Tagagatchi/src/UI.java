@@ -1,6 +1,7 @@
 package Tagagatchi.src;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
 
 import java.awt.Dimension;
 import java.awt.event.*;
@@ -274,11 +275,18 @@ public class UI extends Game{
 
     public void openStartUI()
     {
-        JPanel startPanel = new JPanel();
+        FlatLightLaf.setup();
+        frame = new JFrame("Blobagatchi");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        JPanel startPanel = new JPanel(null);
         startPanel.setPreferredSize(new Dimension(600,200));
-        JTextArea welcomeMessage = new JTextArea("Welcome to Blobagatchi!\nChoose your new pet below!");
-        welcomeMessage.setBounds(150, 50, 300, 50);
+
+        JLabel welcomeMessage = new JLabel("Welcome to Blobagatchi! Choose your new pet below!");
+        welcomeMessage.setBounds(0, 100, 600, 20);
+        welcomeMessage.setHorizontalAlignment(SwingConstants.CENTER);
         startPanel.add(welcomeMessage);
+
         JButton blob = new JButton("Blob");
         ActionListener blobAL = new ActionListener() {
             public void actionPerformed(ActionEvent ae)
@@ -287,9 +295,63 @@ public class UI extends Game{
             }
         };
         blob.addActionListener(blobAL);
-        blob.setBounds(100, 100, 50, 10);
+        blob.setBounds(100, 120, 100, 20);
+        startPanel.add(blob);
 
+        JButton alien = new JButton("Alien");
+        ActionListener alienAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                petType = "alien";
+            }
+        };
+        alien.addActionListener(alienAL);
+        alien.setBounds(200, 120, 100, 20);
+        startPanel.add(alien);
+
+        JButton cat = new JButton("Cat");
+        ActionListener catAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                petType = "cat";
+            }
+        };
+        cat.addActionListener(catAL);
+        cat.setBounds(300, 120, 100, 20);
+        startPanel.add(cat);
+
+        JButton dog = new JButton("Dog");
+        ActionListener dogAL = new ActionListener() {
+            public void actionPerformed(ActionEvent ae)
+            {
+                petType = "dog";
+            }
+        };
+        dog.addActionListener(dogAL);
+        dog.setBounds(400, 120, 100, 20);
+        startPanel.add(dog);
+
+        //Blobagatchi logo
+        //BLOB IMAGE
+        try{
+            BufferedImage blobImageFile;
+            blobImageFile = ImageIO.read(this.getClass().getResource("sprites/title.png"));
+            Image big = blobImageFile.getSubimage(00,100,20,10);
+            big = big.getScaledInstance(200, 100, Image.SCALE_DEFAULT);
+            blobImage = new JLabel(new ImageIcon(big));
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        blobImage.setBounds(200,0,200,100);
+        startPanel.add(blobImage);
+       
+       
         // while(petType.equals(" ")); TODO
+
+        frame.add(startPanel);
+        frame.setResizable(false);
+        frame.pack();
+        frame.setVisible(true);
     }
 
     public void update(Pet vPet){

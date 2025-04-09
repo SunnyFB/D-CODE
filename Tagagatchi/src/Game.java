@@ -108,8 +108,9 @@ public class Game extends Main{
         
                 System.out.println("Save file loaded!");
         
-                ui.openGameUI(virtualPet);
-                gameLoop();
+                ui.openStartUI();
+//                ui.openGameUI(virtualPet);
+                //gameLoop();
         
                 reader.close();
             }
