@@ -3,6 +3,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.GroupLayout.Alignment;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.*;
 import com.formdev.flatlaf.*;
@@ -336,13 +337,14 @@ public class UI extends Game{
         try{
             BufferedImage blobImageFile;
             blobImageFile = ImageIO.read(this.getClass().getResource("sprites/title.png"));
-            Image big = blobImageFile.getSubimage(00,100,20,10);
-            big = big.getScaledInstance(200, 100, Image.SCALE_DEFAULT);
+            Image big = blobImageFile;
+            big = big.getScaledInstance(500, 100, Image.SCALE_DEFAULT);
             blobImage = new JLabel(new ImageIcon(big));
         }catch (IOException e){
             e.printStackTrace();
         }
-        blobImage.setBounds(200,0,200,100);
+        blobImage.setBorder(BorderFactory.createLineBorder(Color.black));
+        blobImage.setBounds(50,0,500,100);
         startPanel.add(blobImage);
        
        
