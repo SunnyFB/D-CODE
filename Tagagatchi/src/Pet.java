@@ -44,8 +44,8 @@ public class Pet
      */
     public void healthyPet()
     {
-        if (fullness >= 8) health++;
-        else if (hygiene >= 9) health++;
+        if (fullness >= 8) setHealth(health + .2);
+        if (hygiene >= 9) setHealth(health + .3);
     }
 
     /**
@@ -148,7 +148,7 @@ public class Pet
         if (weight > maxWeight)
         {
             weight = maxWeight;
-            health -= .5; //pet gets unhealthy if it is overweight
+            health -= 1; //pet gets unhealthy if it is overweight
         }
         if (health > maxHealth)
         {
@@ -206,9 +206,8 @@ public class Pet
      */
     public void sleep()
     {
-        energy += 2;
-        health++;
-        boundValues();
+        setEnergy(energy + 2);
+        setHealth(health + 1);
     }
 
     /**
@@ -216,14 +215,12 @@ public class Pet
      */
     public void walk()
     {
-        weight--;
-        happiness++;
-        health++;
-        energy--;
-        fullness--;
-        hygiene--;
-        boundValues();
-        isHungry();
+        setWeight(weight - .5);
+        setHappiness(happiness - .5);
+        setHealth(health + 1);
+        setEnergy(energy - .5);
+        setFullness(fullness - .5);
+        setHygiene(hygiene - .5);
     }
 
     /**
@@ -231,12 +228,12 @@ public class Pet
      */
     public void play()
     {
-        weight -= 2;
-        happiness += 2;
-        health += 2;
-        energy -= 2;
-        fullness -= 2;
-        hygiene -=2;
+        setWeight(weight - 1);
+        setHappiness(happiness + 2);
+        setHealth(health + 2);
+        setEnergy(energy - 1);
+        setFullness(fullness - 1);
+        setHygiene(hygiene - 1);
         boundValues();
         isHungry();
     }
@@ -285,8 +282,8 @@ public class Pet
      */
     public void toDoctor()
     {
-        happiness--;
-        health += 2;
+        setHappiness(happiness - 1);
+        setHealth(health + 3);
         boundValues();
     }
 
@@ -295,11 +292,9 @@ public class Pet
      */
     public void train()
     {
-        happiness++;
-        energy--;
-        fullness--;
-        hygiene--;
-        boundValues();
+        setHappiness(happiness + 1);
+        setEnergy(energy - .5);
+        setFullness(fullness - .5);
         isHungry();
     }
 
@@ -308,10 +303,9 @@ public class Pet
     */
     public void giveBath()
     {
-        hygiene++;
-        energy += .5;
-        happiness-=1;
-        boundValues();
+        setHygiene(hygiene + 4);
+        setEnergy(energy + .5);
+        setHappiness(happiness - 1);
     }
 
 
