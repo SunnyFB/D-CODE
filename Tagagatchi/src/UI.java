@@ -20,6 +20,7 @@ public class UI extends Game{
     JProgressBar energyField;
     JProgressBar happinessField;
     JLabel blobImage;
+    JLabel timeLasted;
 
     //variables to update Game
     public boolean feedFood = false;
@@ -131,11 +132,9 @@ public class UI extends Game{
         panel.add(playButton);
 
 
-
+        //Save button
         JButton saveButton = new JButton();
         saveButton.setBounds(0,180,20,20);
-
-        //Set button image
         try {
             BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/icons/save.png"));
             Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
@@ -153,9 +152,10 @@ public class UI extends Game{
         saveButton.addActionListener(a2);
         panel.add(saveButton);
 
+
+        //Pause button
         JButton pauseButton = new JButton();
         pauseButton.setBounds(20,180,20,20);
-        //Set button initially
         try{
             BufferedImage unscaled = ImageIO.read(this.getClass().getResource("sprites/icons/pause.png"));
             Image img = unscaled.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
@@ -190,6 +190,11 @@ public class UI extends Game{
         pauseButton.addActionListener(pauseButtonAL);
         panel.add(pauseButton);
 
+        //Time lasted text
+        timeLasted = new JLabel("Time Lasted: 0s");
+        timeLasted.setBounds(0,160,200,20);
+        frame.add(timeLasted);
+
 
 
         //BLOB IMAGE
@@ -207,8 +212,13 @@ public class UI extends Game{
         }catch (IOException e){
             e.printStackTrace();
         }
-        blobImage.setBounds(150,0,200,200);
+        blobImage.setBounds(200,0,200,200);
         frame.add(blobImage);
+
+
+
+
+
 
         //Bars to show things
         JTextArea healthText = new JTextArea("Health");
@@ -274,10 +284,6 @@ public class UI extends Game{
         frame.setVisible(true);
     }
 
-    /**
-     * The opening title screen of the game. If there is no game file, the game will use this method.
-     * This is where is player can choose their type of pet.
-     */
     public void openStartUI()
     {
         FlatLightLaf.setup();
@@ -356,11 +362,7 @@ public class UI extends Game{
         frame.setVisible(true);
     }
 
-    /**
-     * This method is used to update the information on the UI.
-     * @param vPet the Pet that is being cared for in the game.
-     */
-    public void update(Pet vPet){
+    public void update(Pet vPet,String timerTime){
         //Update the UI
         fullnessField.setValue((int) (vPet.getFullness()*10));
         healthField.setValue((int) (vPet.getHealth() * 10));
@@ -368,6 +370,7 @@ public class UI extends Game{
         happinessField.setValue((int) (vPet.getHappiness() * 10));
         hygieneField.setValue((int) (vPet.getHygiene() * 10));
         energyField.setValue((int) (vPet.getEnergy() * 10 ));
+        timeLasted = new JLabel("Time Lasted: "+timerTime+"s");
         
         if (vPet.isDead()){
             try{
@@ -390,9 +393,6 @@ public class UI extends Game{
         
     }
 
-    /**
-     * @return the pet type of the current pet
-     */
     public String getPetType()
     {
         return petType;
